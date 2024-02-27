@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5f;
+    public Vector2 moveInput;
     private Rigidbody2D rb;
+
+    [SerializeField]
+    private InputActionReference movement, jump;
 
     void Start()
     {
@@ -14,11 +19,19 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        //float horizontalInput = Input.GetAxis("Horizontal");
+        //float verticalInput = Input.GetAxis("Vertical");
 
-        Vector2 movement = new Vector2(horizontalInput, verticalInput);
+        //Vector2 movement = new Vector2(horizontalInput, verticalInput);
 
-        rb.velocity = movement * speed;
+        moveInput = movement.action.ReadValue<Vector2>();
+
+        rb.velocity = moveInput * speed;
     }
+
+    /*
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        moveInput = context.ReadValue<Vector2>();
+    }*/
 }
