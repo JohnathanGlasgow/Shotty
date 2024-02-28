@@ -9,7 +9,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public Transform target;
-    public float smoothSpeed = 0.125f; // Smoothing factor for camera movement
+    public float smoothSpeed = 0.05f; // Smoothing factor for camera movement
     public Vector3 offset;
  
     void FixedUpdate() 
