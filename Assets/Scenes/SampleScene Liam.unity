@@ -521,7 +521,7 @@ MonoBehaviour:
   decceleration: 7
   velPower: 9
   frictionAmount: 0.2
-  jumpForce: 0
+  jumpForce: 5
   moveInput: {x: 0, y: 0}
   gravityStrength: 9.8
   movement: 0
@@ -532,6 +532,8 @@ MonoBehaviour:
   groundCheckSize: {x: 1, y: 1}
   movementInput: {fileID: -4953210019198996095, guid: 82807f90c57ad7641ae9647c06f48aca, type: 3}
   jump: {fileID: -3813050440575655324, guid: 82807f90c57ad7641ae9647c06f48aca, type: 3}
+  jumpInput: 0
+  canJump: 1
 --- !u!1 &1441551964
 GameObject:
   m_ObjectHideFlags: 0

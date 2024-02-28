@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+//https://www.youtube.com/watch?v=KbtcEVCM7bw
+
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
@@ -30,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     private InputActionReference movementInput, jump;
 
     public float jumpInput;
+    public bool canJump = true;
 
 
     void Start()
@@ -55,6 +58,18 @@ public class PlayerMovement : MonoBehaviour
         {
             isGrounded = false;
         }
+
+        if(jumpInput == 1 && isGrounded && canJump)
+        {
+            Jump();
+            jumpInput = 0;
+        }
+
+        if(jumpInput == 0 && isGrounded && canJump == false )
+        {
+            canJump = true;
+        }
+
 
         
     }
@@ -102,7 +117,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
+        canJump = false;
+        isGrounded = false;
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        Debug.Log("jump");
     }
     /*
     public void OnMove(InputAction.CallbackContext context)
