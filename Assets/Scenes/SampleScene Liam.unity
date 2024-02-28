@@ -380,7 +380,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -516,9 +516,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c9a7e273151457489eaae68dc9450f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  moveSpeed: 10
+  acceleration: 7
+  decceleration: 7
+  velPower: 9
   moveInput: {x: 0, y: 0}
-  movement: {fileID: -4953210019198996095, guid: 82807f90c57ad7641ae9647c06f48aca, type: 3}
+  gravityStrength: 9.8
+  movementInput: {fileID: -4953210019198996095, guid: 82807f90c57ad7641ae9647c06f48aca, type: 3}
   jump: {fileID: -3813050440575655324, guid: 82807f90c57ad7641ae9647c06f48aca, type: 3}
 --- !u!1 &1441551964
 GameObject:
