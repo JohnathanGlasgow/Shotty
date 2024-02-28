@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 381657379}
   - component: {fileID: 381657378}
   - component: {fileID: 381657377}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -520,8 +520,16 @@ MonoBehaviour:
   acceleration: 7
   decceleration: 7
   velPower: 9
+  frictionAmount: 0.2
+  jumpForce: 0
   moveInput: {x: 0, y: 0}
   gravityStrength: 9.8
+  movement: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  groundCheckPoint: {fileID: 711901335}
+  groundCheckSize: {x: 1, y: 1}
   movementInput: {fileID: -4953210019198996095, guid: 82807f90c57ad7641ae9647c06f48aca, type: 3}
   jump: {fileID: -3813050440575655324, guid: 82807f90c57ad7641ae9647c06f48aca, type: 3}
 --- !u!1 &1441551964

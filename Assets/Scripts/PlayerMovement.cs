@@ -9,15 +9,27 @@ public class PlayerMovement : MonoBehaviour
     public float acceleration;
     public float decceleration;
     public float velPower;
+    public float frictionAmount = 0.2f;
+
+    public float jumpForce;
+
+    private bool isGrounded;
+
     public Vector2 moveInput;
     private Rigidbody2D rb;
     public float gravityStrength = 9.8f; 
     
     public float movement;
 
+    public LayerMask groundLayer;
+
+    public Transform groundCheckPoint;
+    public Vector2 groundCheckSize;
+
     [SerializeField]
     private InputActionReference movementInput, jump;
 
+    public float jumpInput;
 
 
     void Start()
@@ -34,7 +46,17 @@ public class PlayerMovement : MonoBehaviour
 
         moveInput = movementInput.action.ReadValue<Vector2>();
 
+        jumpInput = jump.action.ReadValue<float>();
+
         //rb.velocity = moveInput * speed;
+        if(Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0, groundLayer)){
+            isGrounded = true;
+        }else
+        {
+            isGrounded = false;
+        }
+
+        
     }
 
     void FixedUpdate()
@@ -51,6 +73,10 @@ public class PlayerMovement : MonoBehaviour
 
         rb.AddForce(movement * Vector2.right);
 
+        Friction();
+
+
+
     }
 
     void ApplyGravity()
@@ -62,6 +88,22 @@ public class PlayerMovement : MonoBehaviour
     
     }
 
+    void Friction()
+    {
+        if(isGrounded && Mathf.Abs(moveInput.x) < 0.01f)
+        {
+            float amount = Mathf.Min(Mathf.Abs(rb.velocity.x), Mathf.Abs(frictionAmount));
+
+            amount *= Mathf.Sign(rb.velocity.x);
+
+            rb.AddForce(Vector2.right * -amount, ForceMode2D.Impulse);
+        }
+    }
+
+    void Jump()
+    {
+        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+    }
     /*
     public void OnMove(InputAction.CallbackContext context)
     {
