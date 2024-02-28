@@ -15,7 +15,7 @@ public class MouseToCrosshair : MonoBehaviour
     void Start()
     {
         // Calculate the radius of the orbit (sum of the radius of the center object and the radius of the orbiting object)
-        orbitRadius = (CrosshairOrbitObject.localScale.x + transform.localScale.x) / 2f; // Summing up the radius of both objects
+        orbitRadius = (CrosshairOrbitObject.localScale.x + transform.localScale.x) ; // Summing up the radius of both objects
     }
 
     void Update()
