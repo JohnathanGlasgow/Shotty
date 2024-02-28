@@ -1,5 +1,10 @@
 using UnityEngine;
 
+/// <summary>
+/// This script makes the Particle System rotate with a target object.
+/// This is to be used for the shotgun particles to rotate with the crosshair.
+/// </summary>
+
 public class RotateParticleWithObject : MonoBehaviour
 {
     public Transform targetObject; // The object whose rotation you want to match

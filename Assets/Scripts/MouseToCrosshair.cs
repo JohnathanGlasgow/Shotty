@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 /// Written with input from ChatGPT using the following prompt:
 /// "Write a script that makes an object follow the mouse cursor and rotate towards it. The object should orbit around a center object."
 /// </summary>
+
 public class MouseToCrosshair : MonoBehaviour
 {
     public Transform CrosshairOrbitObject; // The object to orbit around
