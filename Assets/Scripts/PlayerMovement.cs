@@ -28,11 +28,20 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheckPoint;
     public Vector2 groundCheckSize;
 
-    [SerializeField]
-    private InputActionReference movementInput, jump;
 
     public float jumpInput;
     public bool canJump = true;
+
+    public Transform crosshairTransform;
+
+    private float shootInput;
+    public Vector2 shootAngle;
+    public bool canShoot = true;
+    public float shootForce;
+
+    [SerializeField]
+    private InputActionReference movementInput, jump, shoot;
+
 
 
     void Start()
@@ -46,10 +55,13 @@ public class PlayerMovement : MonoBehaviour
         //float verticalInput = Input.GetAxis("Vertical");
 
         //Vector2 movement = new Vector2(horizontalInput, verticalInput);
+        shootAngle = crosshairTransform.rotation * Vector2.left;
 
         moveInput = movementInput.action.ReadValue<Vector2>();
 
         jumpInput = jump.action.ReadValue<float>();
+
+        shootInput = shoot.action.ReadValue<float>();
 
         //rb.velocity = moveInput * speed;
         if(Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0, groundLayer)){
@@ -62,12 +74,21 @@ public class PlayerMovement : MonoBehaviour
         if(jumpInput == 1 && isGrounded && canJump)
         {
             Jump();
-            jumpInput = 0;
         }
 
         if(jumpInput == 0 && isGrounded && canJump == false )
         {
             canJump = true;
+        }
+
+        if(shootInput == 1 && canShoot)
+        {
+            Shoot();
+        }
+
+        if(shootInput == 0 && canShoot == false)
+        {
+            canShoot = true;
         }
 
 
@@ -121,6 +142,13 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = false;
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         Debug.Log("jump");
+    }
+
+    void Shoot()
+    {
+        canShoot = false;
+        Debug.Log("shoot");
+        rb.AddForce(shootAngle * shootForce, ForceMode2D.Impulse);
     }
     /*
     public void OnMove(InputAction.CallbackContext context)

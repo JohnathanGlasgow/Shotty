@@ -378,6 +378,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shotgun+MovementPlayerPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6790509616471050880, guid: 00938713826be4a048cff9cf4b9b68a1, type: 3}
+      propertyPath: shoot
+      value: 
+      objectReference: {fileID: 8808941624275435981, guid: 82807f90c57ad7641ae9647c06f48aca, type: 3}
+    - target: {fileID: 6790509616471050880, guid: 00938713826be4a048cff9cf4b9b68a1, type: 3}
+      propertyPath: shootForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790509616471050880, guid: 00938713826be4a048cff9cf4b9b68a1, type: 3}
+      propertyPath: crosshairTransform
+      value: 
+      objectReference: {fileID: 1580955731}
     - target: {fileID: 7393151823495197203, guid: 00938713826be4a048cff9cf4b9b68a1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -485,6 +497,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1580955731 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7206109326468404230, guid: 00938713826be4a048cff9cf4b9b68a1, type: 3}
+  m_PrefabInstance: {fileID: 567010044}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

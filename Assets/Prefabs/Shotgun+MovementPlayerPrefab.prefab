@@ -5155,10 +5155,15 @@ MonoBehaviour:
     m_Bits: 64
   groundCheckPoint: {fileID: 7393151823495197203}
   groundCheckSize: {x: 1, y: 1}
-  movementInput: {fileID: -4953210019198996095, guid: 82807f90c57ad7641ae9647c06f48aca, type: 3}
-  jump: {fileID: -3813050440575655324, guid: 82807f90c57ad7641ae9647c06f48aca, type: 3}
   jumpInput: 0
   canJump: 1
+  crosshairTransform: {fileID: 7206109326468404230}
+  shootAngle: {x: 0, y: 0}
+  canShoot: 1
+  shootForce: 10
+  movementInput: {fileID: -4953210019198996095, guid: 82807f90c57ad7641ae9647c06f48aca, type: 3}
+  jump: {fileID: -3813050440575655324, guid: 82807f90c57ad7641ae9647c06f48aca, type: 3}
+  shoot: {fileID: 8808941624275435981, guid: 82807f90c57ad7641ae9647c06f48aca, type: 3}
 --- !u!114 &941220795619217108
 MonoBehaviour:
   m_ObjectHideFlags: 0
