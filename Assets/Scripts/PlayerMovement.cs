@@ -97,15 +97,21 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+
+        moveVelocity = rb.velocity.x;
         ApplyGravity();
 
-        if(Mathf.Abs(moveInput.x) > 0.01f)
+        
+        if(moveInput.x > 0.01f && rb.velocity.x < moveSpeed)
+        {
+            Move();
+        }
+
+        if(moveInput.x < -0.01f && rb.velocity.x > -moveSpeed)
         {
             Move();
         }
         Friction();
-
-
 
     }
 
@@ -121,7 +127,7 @@ public class PlayerMovement : MonoBehaviour
     void Move()
     {
         float targetSpeed = moveInput.x * moveSpeed;
-
+        
         float speedDif = targetSpeed - rb.velocity.x;
 
         float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : decceleration;
