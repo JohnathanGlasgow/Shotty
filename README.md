@@ -2,10 +2,10 @@
 Collaborative project for ID737 Game Development
 # To-Do
 - [x] Player Movement
-- [ ] Camera Follow
+- [x] Camera Follow
 - [x] Aiming
 - [ ] Shotgun Mechanics (reloading/ammo)
-- [ ] Knockback Mechanic
+- [x] Knockback Mechanic
 - [ ] Level 1
 - [ ] Level 2
 - [ ] Audio
