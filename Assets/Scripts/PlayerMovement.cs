@@ -97,8 +97,6 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-
-        moveVelocity = rb.velocity.x;
         ApplyGravity();
 
         
@@ -127,7 +125,7 @@ public class PlayerMovement : MonoBehaviour
     void Move()
     {
         float targetSpeed = moveInput.x * moveSpeed;
-        
+
         float speedDif = targetSpeed - rb.velocity.x;
 
         float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : decceleration;
