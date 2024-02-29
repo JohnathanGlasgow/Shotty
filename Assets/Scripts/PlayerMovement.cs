@@ -99,16 +99,10 @@ public class PlayerMovement : MonoBehaviour
     {
         ApplyGravity();
 
-        float targetSpeed = moveInput.x * moveSpeed;
-
-        float speedDif = targetSpeed - rb.velocity.x;
-
-        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : decceleration;
-
-        float movement = speedDif * accelRate;
-
-        rb.AddForce(movement * Vector2.right);
-
+        if(Mathf.Abs(moveInput.x) > 0.01f)
+        {
+            Move();
+        }
         Friction();
 
 
@@ -122,6 +116,19 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity += gravityForce * Time.fixedDeltaTime;
 
     
+    }
+
+    void Move()
+    {
+        float targetSpeed = moveInput.x * moveSpeed;
+
+        float speedDif = targetSpeed - rb.velocity.x;
+
+        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : decceleration;
+
+        float movement = speedDif * accelRate;
+
+        rb.AddForce(movement * Vector2.right);
     }
 
     void Friction()
