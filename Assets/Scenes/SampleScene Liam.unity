@@ -387,9 +387,33 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6790509616471050880, guid: 00938713826be4a048cff9cf4b9b68a1, type: 3}
+      propertyPath: frictionAmount
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790509616471050880, guid: 00938713826be4a048cff9cf4b9b68a1, type: 3}
       propertyPath: crosshairTransform
       value: 
       objectReference: {fileID: 1580955731}
+    - target: {fileID: 7375445416719391978, guid: 00938713826be4a048cff9cf4b9b68a1, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 6c7d89714d13aaf48aeef55b3efba88a, type: 2}
+    - target: {fileID: 7375445416719391978, guid: 00938713826be4a048cff9cf4b9b68a1, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375445416719391978, guid: 00938713826be4a048cff9cf4b9b68a1, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375445416719391978, guid: 00938713826be4a048cff9cf4b9b68a1, type: 3}
+      propertyPath: m_SleepingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375445416719391978, guid: 00938713826be4a048cff9cf4b9b68a1, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7393151823495197203, guid: 00938713826be4a048cff9cf4b9b68a1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
