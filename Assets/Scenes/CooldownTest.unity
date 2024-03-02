@@ -428,6 +428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CooldownTime: 1.5
   playerMovement: {fileID: 6790509615584365227}
+  spriteRenderer: {fileID: 4872475547044059173}
   particleSystem: {fileID: 8291326024906777350}
 --- !u!114 &1203692047062133905
 MonoBehaviour:
@@ -684,7 +685,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -706,7 +707,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
