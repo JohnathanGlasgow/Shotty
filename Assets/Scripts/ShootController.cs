@@ -15,6 +15,7 @@ public class ShootController : MonoBehaviour
     private bool CooldownActive = false; // Is the cooldown active?
     private DefaultPlayerActions playerActions;
     public PlayerMovement playerMovement;
+    public SpriteRenderer spriteRenderer; // Reference to the Sprite Renderer
 
     public ParticleSystem particleSystem; // Reference to the Particle System
 
@@ -56,6 +57,7 @@ public class ShootController : MonoBehaviour
 
     void IncrementCooldown()
     {
+        ChangeColor();
         Cooldown += Time.deltaTime;
         if (Cooldown > CooldownTime)
         {
@@ -63,4 +65,13 @@ public class ShootController : MonoBehaviour
             CooldownActive = false;
         }
     }
+
+    // This method gradually changes the color of the player sprite from white to red based on the cooldown time
+    void ChangeColor()
+    {
+        // Change the color of the sprite
+        spriteRenderer.color = Color.Lerp(Color.white, Color.red, Cooldown / CooldownTime);
+    }
+
+
 }
