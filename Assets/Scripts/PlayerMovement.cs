@@ -155,7 +155,7 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("jump");
     }
 
-    internal void Shoot()
+    public void Shoot()
     {
         canShoot = false;
         Debug.Log("shoot");
@@ -166,4 +166,10 @@ public class PlayerMovement : MonoBehaviour
     {
         moveInput = context.ReadValue<Vector2>();
     }*/
+    public void ResetMovement()
+    {
+        rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0;
+    }
+
 }

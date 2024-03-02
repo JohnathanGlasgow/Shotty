@@ -10,9 +10,11 @@ using UnityEngine;
 
 public class ShootController : MonoBehaviour
 {
+    public Color CooldownInactiveColor = Color.red; // Color when the cooldown is inactive
+    public Color CooldownActiveColor = Color.white; // Color when the cooldown is active
     public float CooldownTime = 0.5f; // Cooldown time in seconds
     private float Cooldown = 0.0f; // Current cooldown time
-    private bool CooldownActive = false; // Is the cooldown active?
+    public bool CooldownActive = false; // Is the cooldown active?
     private DefaultPlayerActions playerActions;
     public PlayerMovement playerMovement;
     public SpriteRenderer spriteRenderer; // Reference to the Sprite Renderer
@@ -23,6 +25,11 @@ public class ShootController : MonoBehaviour
     {
         playerActions = new DefaultPlayerActions();
         playerActions.Player.Fire.performed += _ => Fire();
+    }
+
+    void Start()
+    {
+        spriteRenderer.color = CooldownInactiveColor;
     }
 
     void Update()
@@ -70,8 +77,14 @@ public class ShootController : MonoBehaviour
     void ChangeColor()
     {
         // Change the color of the sprite
-        spriteRenderer.color = Color.Lerp(Color.white, Color.red, Cooldown / CooldownTime);
+        spriteRenderer.color = Color.Lerp(CooldownActiveColor, CooldownInactiveColor, Cooldown / CooldownTime);
     }
 
+    public void ResetCooldown()
+    {
+        CooldownActive = false;
+        Cooldown = 0.0f;
+        spriteRenderer.color = CooldownInactiveColor;
+    }
 
 }
