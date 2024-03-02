@@ -640,6 +640,10 @@ PrefabInstance:
       propertyPath: CooldownTime
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6130719037991300701, guid: 3bbc69407d5434a45a5520f307d42dc7, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8300470378406968751, guid: 3bbc69407d5434a45a5520f307d42dc7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.64

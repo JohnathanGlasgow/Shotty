@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4085548229073642010}
   m_Layer: 0
   m_Name: CooldownTestPrefab
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -211,7 +211,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac7208dce4cc44bdb82db6c86d47a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CooldownInactiveColor: {r: 1, g: 0, b: 0, a: 1}
+  CooldownActiveColor: {r: 1, g: 1, b: 1, a: 1}
   CooldownTime: 1.5
+  CooldownActive: 0
   playerMovement: {fileID: 8354523637163986719}
   spriteRenderer: {fileID: 6928009104552592923}
   particleSystem: {fileID: 5974908501877402488}
@@ -5359,7 +5362,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
