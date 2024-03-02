@@ -10,7 +10,11 @@ using UnityEngine;
 
 public class ShootController : MonoBehaviour
 {
+    public float CooldownTime = 0.5f; // Cooldown time in seconds
+    private float Cooldown = 0.0f; // Current cooldown time
+    private bool CooldownActive = false; // Is the cooldown active?
     private DefaultPlayerActions playerActions;
+    public PlayerMovement playerMovement;
 
     public ParticleSystem particleSystem; // Reference to the Particle System
 
@@ -18,6 +22,14 @@ public class ShootController : MonoBehaviour
     {
         playerActions = new DefaultPlayerActions();
         playerActions.Player.Fire.performed += _ => Fire();
+    }
+
+    void Update()
+    {
+        if (CooldownActive)
+        {
+        IncrementCooldown();
+        }
     }
 
     void OnEnable()
@@ -32,7 +44,23 @@ public class ShootController : MonoBehaviour
 
     void Fire()
     {
-        // Play the Particle System
-        particleSystem?.Play();
+        if (CooldownActive == false)
+        {
+            CooldownActive = true;
+            Cooldown = 0.0f;
+            particleSystem?.Play();
+            playerMovement.Shoot();
+        }
+
+    }
+
+    void IncrementCooldown()
+    {
+        Cooldown += Time.deltaTime;
+        if (Cooldown > CooldownTime)
+        {
+            Cooldown = 0.0f;
+            CooldownActive = false;
+        }
     }
 }

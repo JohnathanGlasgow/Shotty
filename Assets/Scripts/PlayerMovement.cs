@@ -83,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(shootInput == 1 && canShoot)
         {
-            Shoot();
+           //Shoot();
         }
 
         if(shootInput == 0 && canShoot == false)
@@ -155,7 +155,7 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("jump");
     }
 
-    void Shoot()
+    internal void Shoot()
     {
         canShoot = false;
         Debug.Log("shoot");
