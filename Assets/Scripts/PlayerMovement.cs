@@ -39,6 +39,9 @@ public class PlayerMovement : MonoBehaviour
     public bool canShoot = true;
     public float shootForce;
 
+
+    public AudioManager audioManager;
+
     [SerializeField]
     private InputActionReference movementInput, jump, shoot;
 
@@ -152,13 +155,15 @@ public class PlayerMovement : MonoBehaviour
         canJump = false;
         isGrounded = false;
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        Debug.Log("jump");
+        audioManager.Jump();
+        //Debug.Log("jump");
     }
 
     public void Shoot()
     {
         canShoot = false;
-        Debug.Log("shoot");
+        audioManager.ShotgunShoot();
+        //Debug.Log("shoot");
         rb.AddForce(shootAngle * shootForce, ForceMode2D.Impulse);
     }
     /*

@@ -21,6 +21,8 @@ public class ShootController : MonoBehaviour
 
     public ParticleSystem particleSystem; // Reference to the Particle System
 
+    public AudioManager audioManager;
+
     void Awake()
     {
         playerActions = new DefaultPlayerActions();
@@ -36,7 +38,7 @@ public class ShootController : MonoBehaviour
     {
         if (CooldownActive)
         {
-        IncrementCooldown();
+            IncrementCooldown();
         }
     }
 
@@ -69,6 +71,7 @@ public class ShootController : MonoBehaviour
         if (Cooldown > CooldownTime)
         {
             Cooldown = 0.0f;
+            audioManager.ShotgunReload();
             CooldownActive = false;
         }
     }
@@ -85,6 +88,7 @@ public class ShootController : MonoBehaviour
         CooldownActive = false;
         Cooldown = 0.0f;
         spriteRenderer.color = CooldownInactiveColor;
+        
     }
 
 }
