@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8354523637163986719}
   - component: {fileID: 4085548229073642010}
   m_Layer: 0
-  m_Name: CooldownTestPrefab
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
