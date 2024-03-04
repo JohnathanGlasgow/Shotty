@@ -21,8 +21,6 @@ public class ShootController : MonoBehaviour
 
     public ParticleSystem particleSystem; // Reference to the Particle System
 
-    public AudioManager audioManager;
-
     void Awake()
     {
         playerActions = new DefaultPlayerActions();
@@ -71,7 +69,7 @@ public class ShootController : MonoBehaviour
         if (Cooldown > CooldownTime)
         {
             Cooldown = 0.0f;
-            audioManager.ShotgunReload();
+            AudioManager.PlaySound(2); //reload sound
             CooldownActive = false;
         }
     }

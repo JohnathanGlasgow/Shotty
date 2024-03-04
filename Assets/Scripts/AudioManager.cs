@@ -4,29 +4,33 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public AudioClip shotgunShoot;
-    public AudioClip shotgunReload;
-    public AudioClip jump;
-    AudioSource audioSource;
+    public static AudioManager Instance;
+    private AudioSource audioSource;
 
-    void Start()
+    public AudioClip[] audioClips;
+
+    private void Awake()
     {
+        Instance = this;
         audioSource = GetComponent<AudioSource>();
     }
 
-    //this code is bad, refactor later on
-    public void ShotgunShoot()
+    private void onPlaySound(int soundIndex)
     {
-        audioSource.PlayOneShot(shotgunShoot, 0.7F);
+        if (soundIndex >= 0 && soundIndex < audioClips.Length)
+        {
+            audioSource.PlayOneShot(audioClips[soundIndex]);
+        }
+        else
+        {
+            Debug.LogWarning("Sound index out of range");
+        }
     }
 
-    public void ShotgunReload()
+    public static void PlaySound(int soundIndex)
     {
-        audioSource.PlayOneShot(shotgunReload, 0.7F);
+        Instance.onPlaySound(soundIndex);
     }
 
-    public void Jump()
-    {
-        audioSource.PlayOneShot(jump, 1F);
-    }
+
 }

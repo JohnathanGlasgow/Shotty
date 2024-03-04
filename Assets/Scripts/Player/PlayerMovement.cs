@@ -39,9 +39,6 @@ public class PlayerMovement : MonoBehaviour
     public bool canShoot = true;
     public float shootForce;
 
-
-    public AudioManager audioManager;
-
     [SerializeField]
     private InputActionReference movementInput, jump, shoot;
 
@@ -155,14 +152,14 @@ public class PlayerMovement : MonoBehaviour
         canJump = false;
         isGrounded = false;
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        audioManager.Jump();
+        AudioManager.PlaySound(0); //jump sound
         //Debug.Log("jump");
     }
 
     public void Shoot()
     {
         canShoot = false;
-        audioManager.ShotgunShoot();
+        AudioManager.PlaySound(1); //shoot sound
         //Debug.Log("shoot");
         CameraShake.Shake(0.25f, 0.5f);
         rb.AddForce(shootAngle * shootForce, ForceMode2D.Impulse);
