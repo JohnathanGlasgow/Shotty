@@ -4,10 +4,10 @@ Collaborative project for ID737 Game Development
 - [x] Player Movement
 - [x] Camera Follow
 - [x] Aiming
-- [ ] Shotgun Mechanics (reloading/ammo)
+- [x] Shotgun Mechanics (reloading/ammo)
 - [x] Knockback Mechanic
 - [ ] Level 1
 - [ ] Level 2
-- [ ] Audio
+- [x] Audio
 - [ ] visuals
 - [ ] title screen/pause menu
