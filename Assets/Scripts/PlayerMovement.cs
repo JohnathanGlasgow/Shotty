@@ -164,6 +164,7 @@ public class PlayerMovement : MonoBehaviour
         canShoot = false;
         audioManager.ShotgunShoot();
         //Debug.Log("shoot");
+        CameraShake.Shake(0.25f, 0.5f);
         rb.AddForce(shootAngle * shootForce, ForceMode2D.Impulse);
     }
     /*
