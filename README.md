@@ -10,4 +10,7 @@ Collaborative project for ID737 Game Development
 - [ ] Level 2
 - [x] Audio
 - [ ] visuals
+- [ ] post processing
 - [ ] title screen/pause menu
+- [ ] speedrun timer
+- [ ] 
