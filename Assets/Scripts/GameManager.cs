@@ -10,8 +10,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject player; // Reference to the player
-    // this variable stores the player's initial position
-    private Vector3 initialPosition;
+    
+    private Vector3 initialPosition; // this variable stores the player's initial position
 
     // singleton pattern
     public static GameManager instance;
@@ -40,6 +40,9 @@ public class GameManager : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Respawns the player at the last known checkpoint
+    /// </summary>
     public void ResetPlayer()
     {
         // reset the player's position

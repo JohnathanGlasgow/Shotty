@@ -1,13 +1,15 @@
 using UnityEngine;
 using DG.Tweening;
 
-//Code from:
-//https://www.youtube.com/watch?v=NKl27_jEpzA
-//https://github.com/agoodboygames/Simple-Camera-Shake-in-Unity/blob/main/CameraShake.cs
+/// <remarks>
+/// Code from:
+/// https://www.youtube.com/watch?v=NKl27_jEpzA
+/// https://github.com/agoodboygames/Simple-Camera-Shake-in-Unity/blob/main/CameraShake.cs
+/// </remarks>
 
-//to call camera shake from another script use:
-//CameraShake.Shake(duration, strength);
-
+/// <summary>
+/// This static script generates DoTween events that shakes the camera.
+/// </summary>
 public class CameraShake : MonoBehaviour
 {
     public static CameraShake Instance;
