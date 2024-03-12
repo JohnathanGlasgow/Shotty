@@ -150,8 +150,8 @@ Transform:
   m_GameObject: {fileID: 66899868}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -13.65, y: -3.8, z: 0}
-  m_LocalScale: {x: 29.627377, y: 1, z: 1}
+  m_LocalPosition: {x: -18.47, y: -3.8, z: 0}
+  m_LocalScale: {x: 29.627377, y: 10.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1776537288}
@@ -314,8 +314,8 @@ Transform:
   m_GameObject: {fileID: 226887989}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 47.200005, y: -3.85, z: 0}
-  m_LocalScale: {x: 29.627377, y: 1, z: 1}
+  m_LocalPosition: {x: 53.23, y: -3.85, z: 0}
+  m_LocalScale: {x: 29.627377, y: -12.025, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1776537288}
@@ -491,7 +491,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 480612097}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -1093,7 +1093,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 790614592}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -1351,7 +1351,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1117226335}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61b4e1da09c1e498489bc00542c9ba18, type: 3}
+  m_Script: {fileID: 11500000, guid: 1674bcc6d52604724ba2b2cc4ddc1e65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MovementSpeed: 7.5
@@ -1397,7 +1397,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1237007876}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -1557,7 +1557,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1258131905}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -1892,7 +1892,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1625339734}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61b4e1da09c1e498489bc00542c9ba18, type: 3}
+  m_Script: {fileID: 11500000, guid: 1674bcc6d52604724ba2b2cc4ddc1e65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MovementSpeed: 6
@@ -2393,7 +2393,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2069263452}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -2538,7 +2538,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2079947145}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -2912,7 +2912,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2137725060}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61b4e1da09c1e498489bc00542c9ba18, type: 3}
+  m_Script: {fileID: 11500000, guid: 1674bcc6d52604724ba2b2cc4ddc1e65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MovementSpeed: 5
