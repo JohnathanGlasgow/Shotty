@@ -1273,6 +1273,7 @@ MonoBehaviour:
   MovementSpeed: 7
   MovingForward: 1
   MovingVertical: 1
+  StartOnContact: 0
 --- !u!1 &1237007876
 GameObject:
   m_ObjectHideFlags: 0
@@ -1826,6 +1827,7 @@ MonoBehaviour:
   MovementSpeed: 6
   MovingForward: 1
   MovingVertical: 1
+  StartOnContact: 0
 --- !u!1 &1697156181
 GameObject:
   m_ObjectHideFlags: 0
@@ -2846,6 +2848,7 @@ MonoBehaviour:
   MovementSpeed: 5
   MovingForward: 1
   MovingVertical: 1
+  StartOnContact: 0
 --- !u!50 &2137725066
 Rigidbody2D:
   serializedVersion: 4
