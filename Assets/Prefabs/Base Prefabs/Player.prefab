@@ -213,7 +213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CooldownInactiveColor: {r: 1, g: 0, b: 0, a: 1}
   CooldownActiveColor: {r: 1, g: 1, b: 1, a: 1}
-  CooldownTime: 1.5
+  CooldownTime: 2
   CooldownActive: 0
   playerMovement: {fileID: 8354523637163986719}
   spriteRenderer: {fileID: 6928009104552592923}

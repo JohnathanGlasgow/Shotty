@@ -33,6 +33,7 @@ public abstract class Powerup : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         color = spriteRenderer.color;
         active = true;
+        cooldown = CooldownAmt;
     }
 
     /// <summary>
