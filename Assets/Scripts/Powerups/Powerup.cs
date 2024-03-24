@@ -16,8 +16,9 @@ using UnityEngine;
 /// </summary>
 public abstract class Powerup : MonoBehaviour
 {
-    public float Cooldown = 1f; // the time it takes for the powerup to reset
+    public float CooldownAmt = 1f; // the time it takes for the powerup to reset
     public float FadeSpeed = 0.01f; // the speed at which the powerup fades in
+    protected float cooldown; // the current cooldown of the powerup
     protected bool active;
     protected Color color;
     protected SpriteRenderer spriteRenderer;
@@ -42,9 +43,9 @@ public abstract class Powerup : MonoBehaviour
         /// if the powerup is not active decrement the Cooldown
         if (active == false)
         {
-            Cooldown -= Time.deltaTime;
+            cooldown -= Time.deltaTime;
             // when the Cooldown reaches 0, reset the powerup
-            if (Cooldown <= 0)
+            if (cooldown <= 0)
             {
                 Reset();
             }
@@ -56,7 +57,7 @@ public abstract class Powerup : MonoBehaviour
     /// It must be defined in the derived class, ie reset Cooldown, increase speed, etc.
     /// </summary>
     /// <param name="other">The collider of the object that triggered the powerup, likely the player</param>
-    protected abstract void PowerUpEffect(Collider2D other);
+    protected abstract void powerUpEffect(Collider2D other);
 
     /// <summary>
     /// This method is called when the powerup collides with another object.
@@ -67,7 +68,7 @@ public abstract class Powerup : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            PowerUpEffect(other);
+            powerUpEffect(other);
             deactivate();
         }
     }
@@ -92,6 +93,7 @@ public abstract class Powerup : MonoBehaviour
         StartCoroutine(fadeIn());
         active = true;
         GetComponent<Collider2D>().enabled = true;
+        cooldown = CooldownAmt;
     }
 
     /// <summary>

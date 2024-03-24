@@ -20,7 +20,7 @@ public class RechargePowerup : Powerup
     /// This method defines the effect of the powerup.
     /// It resets the player's shotgun cooldown.
     /// </summary>
-    protected override void PowerUpEffect(Collider2D other)
+    protected override void powerUpEffect(Collider2D other)
     {
         // get the ShootController component from the player
         ShootController shootController = other.gameObject.GetComponent<ShootController>();
