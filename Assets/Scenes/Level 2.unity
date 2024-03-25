@@ -9348,9 +9348,9 @@ MonoBehaviour:
   CooldownActiveColor: {r: 1, g: 1, b: 1, a: 1}
   CooldownTime: 2
   CooldownActive: 0
-  playerMovement: {fileID: 4194604804218646932}
-  spriteRenderer: {fileID: 3018040330107582608}
-  particleSystem: {fileID: 1957978987565667827}
+  SpriteRenderer: {fileID: 3018040330107582608}
+  ParticleSystem: {fileID: 1957978987565667827}
+  PlayerMovement: {fileID: 4194604804218646932}
 --- !u!114 &8323559167426999942
 MonoBehaviour:
   m_ObjectHideFlags: 0
