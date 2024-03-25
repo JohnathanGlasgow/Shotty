@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -10,15 +8,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject player; // Reference to the player
-    // this variable stores the player's initial position
-    private Vector3 initialPosition;
+    
+    private Vector3 initialPosition; // this variable stores the player's initial position
+    private GameObject[] powerups; // array of game objects that will be reset
 
+    #region Singleton
     // singleton pattern
     public static GameManager instance;
-
-    // array of game objects that will be reset
-    public GameObject[] powerups;
-
     void Awake()
     {
         if (instance == null)
@@ -30,24 +26,17 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    #endregion
 
-    void Start()
+    private void Start()
     {
         // store the player's initial position
         initialPosition = player.transform.position;
-
+        // initialize the powerups array
         powerups = GameObject.FindGameObjectsWithTag("Powerup");
-        // log powerups
-        Debug.Log("Powerups: " + powerups.Length);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void ResetPlayer()
+    private void resetPlayer()
     {
         // reset the player's position
         player.transform.position = initialPosition;
@@ -55,14 +44,25 @@ public class GameManager : MonoBehaviour
         player.GetComponent<ShootController>().ResetCooldown();
         // reset movement
         player.GetComponent<PlayerMovement>().ResetMovement();
+    }
 
-        // find all objects in the scene with the tag "Powerup"
-        // if inactivated, activate them
-        
+    private void resetPowerups()
+    {
+        // loop through powerups and reset them if inactive
         foreach (GameObject powerup in powerups)
         {
-            powerup.SetActive(true);
-        }
+            Powerup powerupComponent = powerup.GetComponent<Powerup>();
 
+            if (powerupComponent.Active)
+            {
+                powerupComponent.Reset();
+            }
+        }
+    }
+
+    public void ResetLevel()
+    {
+        resetPowerups();
+        resetPlayer();
     }
 }

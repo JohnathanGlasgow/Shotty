@@ -19,7 +19,7 @@ public abstract class Powerup : MonoBehaviour
     public float CooldownAmt = 1f; // the time it takes for the powerup to reset
     public float FadeSpeed = 0.01f; // the speed at which the powerup fades in
     protected float cooldown; // the current cooldown of the powerup
-    protected bool active;
+    public bool Active;
     protected Color color;
     protected SpriteRenderer spriteRenderer;
     
@@ -32,7 +32,7 @@ public abstract class Powerup : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         color = spriteRenderer.color;
-        active = true;
+        Active = true;
         cooldown = CooldownAmt;
     }
 
@@ -41,8 +41,8 @@ public abstract class Powerup : MonoBehaviour
     /// </summary>
     protected virtual void Update()
     {
-        /// if the powerup is not active decrement the Cooldown
-        if (active == false)
+        /// if the powerup is not Active decrement the Cooldown
+        if (Active == false)
         {
             cooldown -= Time.deltaTime;
             // when the Cooldown reaches 0, reset the powerup
@@ -81,7 +81,7 @@ public abstract class Powerup : MonoBehaviour
     {
         color.a = 0;
         spriteRenderer.color = color;
-        active = false;
+        Active = false;
         GetComponent<Collider2D>().enabled = false;
     }
 
@@ -92,7 +92,7 @@ public abstract class Powerup : MonoBehaviour
     {
         // fade in the sprite
         StartCoroutine(fadeIn());
-        active = true;
+        Active = true;
         GetComponent<Collider2D>().enabled = true;
         cooldown = CooldownAmt;
     }
