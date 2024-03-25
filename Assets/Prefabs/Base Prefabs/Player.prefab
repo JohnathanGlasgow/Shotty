@@ -5119,8 +5119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb4619b69a634a9ab3772d25b712306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetObject: {fileID: 3738632754667761092}
-  rotationOffset: {x: 0, y: 0, z: -25}
+  TargetObject: {fileID: 3738632754667761092}
+  RotationOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &5736336996949518934
 GameObject:
   m_ObjectHideFlags: 0
