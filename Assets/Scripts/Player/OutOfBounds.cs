@@ -24,6 +24,10 @@ public class OutOfBounds : MonoBehaviour
         gameManager = GameManager.instance;
     }
 
+    /// <summary>
+    /// OnTriggerEnter2D is called when the Collider2D other enters the trigger.
+    /// </summary>
+    /// <param name="other">The other Collider2D involved in this collision, likely the player.</param>
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
