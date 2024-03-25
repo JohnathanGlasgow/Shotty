@@ -2,14 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//generated using help from chatgpt
-//using prompt "unity 2d camera follow"
+/// <remarks>
+/// Generated using help from ChatGPT.
+/// Using prompt "unity 2d camera follow"
+/// </remarks>
 
+/// <summary>
+/// This script allows the camera to smoothly follow the players movement.
+/// </summary>
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target;
-    public float smoothSpeed = 0.05f; // Smoothing factor for camera movement
+    public Transform target;        //Which object should the camera follow (usually the player)
+    public float smoothSpeed = 0.05f; //how fast the camera moves towards the target (1 is almost instant, 0 doesn't move at all)
     public Vector3 offset;
  
     void FixedUpdate() 
