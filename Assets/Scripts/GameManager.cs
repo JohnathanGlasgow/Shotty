@@ -1,10 +1,18 @@
+/*
+ * File: GameManager.cs
+ * -------------------------
+ * This file contains the implementation of the game state management.
+ *
+ * Author: Johnathan
+ * Contributions: Assisted by GitHub Copilot
+ */
+
 using UnityEngine;
 
 /// <summary>
 /// This script manages the game state.
-/// It controls the player reset.
+/// It controls resetting the player and other game objects when the player goes out of bounds or dies.
 /// </summary>
-
 public class GameManager : MonoBehaviour
 {
     public GameObject player; // Reference to the player
@@ -28,6 +36,9 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    /// <summary>
+    /// Start is called before the first frame update.
+    /// </summary>
     private void Start()
     {
         // store the player's initial position
@@ -36,6 +47,9 @@ public class GameManager : MonoBehaviour
         powerups = GameObject.FindGameObjectsWithTag("Powerup");
     }
 
+    /// <summary>
+    /// This method resets the player's position and cooldown.
+    /// </summary>
     private void resetPlayer()
     {
         // reset the player's position
@@ -46,6 +60,9 @@ public class GameManager : MonoBehaviour
         player.GetComponent<PlayerMovement>().ResetMovement();
     }
 
+    /// <summary>
+    /// This method resets the powerups.
+    /// </summary>
     private void resetPowerups()
     {
         // loop through powerups and reset them if inactive
@@ -60,6 +77,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This method resets the level.
+    /// It is called by the OutOfBounds script.
+    /// </summary>
     public void ResetLevel()
     {
         resetPowerups();
