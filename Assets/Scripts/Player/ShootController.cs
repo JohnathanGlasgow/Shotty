@@ -1,92 +1,127 @@
-using System.Collections;
-using System.Collections.Generic;
+/*
+ * File: ShootController.cs
+ * -------------------------
+ * This file contains the implementation of the player's shooting mechanism.
+ *
+ * Author: Johnathan
+ * Contributions: Assisted by GitHub Copilot, Mina Pêcheux (https://www.youtube.com/watch?v=SyA4PPiXorI)
+ */
+
 using UnityEngine;
 
 /// <summary>
 /// This script triggers the Particle System when the player presses the Fire button.
+/// It also manages the cooldown time for the player's shooting mechanism.
+/// The player can only shoot when the cooldown is inactive.
+/// The player will change color based on the cooldown time.
 /// </summary>
-
-// Help on the new input system from: https://www.youtube.com/watch?v=SyA4PPiXorI
-
 public class ShootController : MonoBehaviour
 {
     public Color CooldownInactiveColor = Color.red; // Color when the cooldown is inactive
     public Color CooldownActiveColor = Color.white; // Color when the cooldown is active
     public float CooldownTime = 0.5f; // Cooldown time in seconds
-    private float Cooldown = 0.0f; // Current cooldown time
     public bool CooldownActive = false; // Is the cooldown active?
+    public SpriteRenderer SpriteRenderer; // Reference to the Sprite Renderer
+    public ParticleSystem ParticleSystem; // Reference to the Particle System
+
+    private float cooldown = 0.0f; // Current cooldown time
+
+    #region PlayerMovement stuff
+    public PlayerMovement PlayerMovement;
     private DefaultPlayerActions playerActions;
-    public PlayerMovement playerMovement;
-    public SpriteRenderer spriteRenderer; // Reference to the Sprite Renderer
 
-    public ParticleSystem particleSystem; // Reference to the Particle System
-
-    void Awake()
+    /// <summary>
+    /// Awake is called when the script instance is being loaded.
+    /// </summary>
+    private void Awake()
     {
         playerActions = new DefaultPlayerActions();
         playerActions.Player.Fire.performed += _ => Fire();
     }
 
-    void Start()
+    /// <summary>
+    /// This method is called when the object becomes enabled and active.
+    /// </summary>
+    private void OnEnable()
     {
-        spriteRenderer.color = CooldownInactiveColor;
+        playerActions.Enable();
     }
 
-    void Update()
+    /// <summary>
+    /// This method is called when the behaviour becomes disabled.
+    /// </summary>
+    private void OnDisable()
     {
+        playerActions.Disable();
+    }
+    #endregion
+
+    /// <summary>
+    /// Start is called before the first frame update.
+    /// </summary>
+    private void Start()
+    {
+        SpriteRenderer.color = CooldownInactiveColor;
+    }
+
+    /// <summary>
+    /// Update is called once per frame.
+    /// </summary>
+    private void Update()
+    {
+        // Check if the cooldown is active and increment it
         if (CooldownActive)
         {
             IncrementCooldown();
         }
     }
 
-    void OnEnable()
-    {
-        playerActions.Enable();
-    }
-
-    void OnDisable()
-    {
-        playerActions.Disable();
-    }
-
-    void Fire()
+    /// <summary>
+    /// This method triggers the Particle System and the player's shooting mechanism.
+    /// </summary>
+    private void Fire()
     {
         if (CooldownActive == false)
         {
             CooldownActive = true;
-            Cooldown = 0.0f;
-            particleSystem?.Play();
-            playerMovement.Shoot();
+            cooldown = 0.0f;
+            ParticleSystem?.Play();
+            PlayerMovement.Shoot();
         }
-
     }
 
-    void IncrementCooldown()
+    /// <summary>
+    /// This method increments the cooldown time.
+    /// </summary>
+    private void IncrementCooldown()
     {
-        ChangeColor();
-        Cooldown += Time.deltaTime;
-        if (Cooldown > CooldownTime)
+        changeColor();
+        cooldown += Time.deltaTime;
+        if (cooldown > CooldownTime)
         {
-            Cooldown = 0.0f;
+            cooldown = 0.0f;
             AudioManager.PlaySound(2); //reload sound
             CooldownActive = false;
         }
     }
 
-    // This method gradually changes the color of the player sprite from white to red based on the cooldown time
-    void ChangeColor()
+    /// <summary>
+    /// This method gradually changes the color of the player sprite from white to red based on the cooldown time.
+    /// </summary>
+    private void changeColor()
     {
         // Change the color of the sprite
-        spriteRenderer.color = Color.Lerp(CooldownActiveColor, CooldownInactiveColor, Cooldown / CooldownTime);
+        SpriteRenderer.color = Color.Lerp(CooldownActiveColor, CooldownInactiveColor, cooldown / CooldownTime);
     }
 
+    /// <summary>
+    /// This method resets the cooldown time.
+    /// </summary>
     public void ResetCooldown()
     {
         CooldownActive = false;
-        Cooldown = 0.0f;
-        spriteRenderer.color = CooldownInactiveColor;
-        
+        cooldown = 0.0f;
+        SpriteRenderer.color = CooldownInactiveColor;
     }
 
 }
