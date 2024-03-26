@@ -149,6 +149,12 @@ public class PlayerMovement : MonoBehaviour
         canShoot = false;
         AudioManager.PlaySound(1); //shoot sound
         CameraShake.Shake(0.25f, 0.5f);
+        // if moving downwards set vert velocity to 0
+        if(rb.velocity.y < 0)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, 0);
+        }
+        //rb.velocity = new Vector2(rb.velocity.x, 0);
         rb.AddForce(shootAngle * shootForce, ForceMode2D.Impulse);
     }
 
