@@ -51,7 +51,6 @@ public class GameManager : MonoBehaviour
     /// Respawns the player at the last known checkpoint
     /// </summary>
     public void ResetPlayer()
-
     {
         // reset the player's position
         player.transform.position = initialPosition;
@@ -85,6 +84,6 @@ public class GameManager : MonoBehaviour
     public void ResetLevel()
     {
         resetPowerups();
-        resetPlayer();
+        ResetPlayer();
     }
 }

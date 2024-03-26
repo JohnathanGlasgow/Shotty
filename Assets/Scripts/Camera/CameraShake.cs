@@ -14,10 +14,13 @@ public class CameraShake : MonoBehaviour
 {
     public static CameraShake Instance;
 
+    public bool ShakeActive = true;
+
     private void Awake() => Instance = this;
 
     private void OnShake(float duration, float strength)
     {
+        if (!ShakeActive) return;
         transform.DOShakePosition(duration, strength);
         transform.DOShakeRotation(duration, strength);
     }
