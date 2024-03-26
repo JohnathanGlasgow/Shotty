@@ -1,21 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
+/*
+ * File: GameManager.cs
+ * -------------------------
+ * This file contains the implementation of the game state management.
+ *
+ * Author: Johnathan
+ * Contributions: Assisted by GitHub Copilot
+ */
+
 using UnityEngine;
 
 /// <summary>
 /// This script manages the game state.
-/// It controls the player reset.
+/// It controls resetting the player and other game objects when the player goes out of bounds or dies.
 /// </summary>
-
 public class GameManager : MonoBehaviour
 {
     public GameObject player; // Reference to the player
     
     private Vector3 initialPosition; // this variable stores the player's initial position
+    private GameObject[] powerups; // array of game objects that will be reset
 
+    #region Singleton
     // singleton pattern
     public static GameManager instance;
-
     void Awake()
     {
         if (instance == null)
@@ -27,23 +34,24 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    #endregion
 
-    void Start()
+    /// <summary>
+    /// Start is called before the first frame update.
+    /// </summary>
+    private void Start()
     {
         // store the player's initial position
         initialPosition = player.transform.position;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // initialize the powerups array
+        powerups = GameObject.FindGameObjectsWithTag("Powerup");
     }
 
     /// <summary>
     /// Respawns the player at the last known checkpoint
     /// </summary>
     public void ResetPlayer()
+
     {
         // reset the player's position
         player.transform.position = initialPosition;
@@ -51,5 +59,32 @@ public class GameManager : MonoBehaviour
         player.GetComponent<ShootController>().ResetCooldown();
         // reset movement
         player.GetComponent<PlayerMovement>().ResetMovement();
+    }
+
+    /// <summary>
+    /// This method resets the powerups.
+    /// </summary>
+    private void resetPowerups()
+    {
+        // loop through powerups and reset them if inactive
+        foreach (GameObject powerup in powerups)
+        {
+            Powerup powerupComponent = powerup.GetComponent<Powerup>();
+
+            if (powerupComponent.Active)
+            {
+                powerupComponent.Reset();
+            }
+        }
+    }
+
+    /// <summary>
+    /// This method resets the level.
+    /// It is called by the OutOfBounds script.
+    /// </summary>
+    public void ResetLevel()
+    {
+        resetPowerups();
+        resetPlayer();
     }
 }
