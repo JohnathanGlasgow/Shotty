@@ -2,28 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This script changes the respawn position when trigger events are called.
+/// </summary>
 public class Checkpoint : MonoBehaviour
 {
-    public GameObject flagUnactivated;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject flagUnactivated; //the red flag
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// When the player passes through a checkpoint trigger
+    /// </summary>
+    /// <param name="col"></param>
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if(other.gameObject.CompareTag("Player"))
+        {
+            GameManager.instance.respawnPosition = this.transform.position; //set gamemanager respawn position to this objects position
+            Destroy(flagUnactivated); //destroys the red unactivated flag object
+            Destroy(gameObject); //destroys this gameobject which deletes the trigger.
+        }   
     }
-
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        //Debug.Log("hi");
-        Debug.Log(GameManager.instance.respawnPosition);
-        GameManager.instance.respawnPosition = this.transform.position;
-        Destroy(flagUnactivated);
-        Destroy(gameObject);
-    }
-
 }
