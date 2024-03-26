@@ -48,9 +48,10 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// This method resets the player's position and cooldown.
+    /// Respawns the player at the last known checkpoint
     /// </summary>
-    private void resetPlayer()
+    public void ResetPlayer()
+
     {
         // reset the player's position
         player.transform.position = initialPosition;

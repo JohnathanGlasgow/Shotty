@@ -2,12 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <remarks>
+/// This is a static class which provides easy access for playing sounds from other scripts.
+/// To use call this function: AudioManager.PlaySound(int soundIndex)
+/// </remarks>
+
+/// <summary>
+/// This script manages audio playback.
+/// </summary>
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
     private AudioSource audioSource;
 
-    public AudioClip[] audioClips;
+    public AudioClip[] audioClips;      //Assign audio clips in editor
 
     private void Awake()
     {
@@ -27,10 +35,12 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Plays a sound from the audio manager
+    /// </summary>
+    /// <param name="soundIndex"></param>
     public static void PlaySound(int soundIndex)
     {
         Instance.onPlaySound(soundIndex);
     }
-
-
 }

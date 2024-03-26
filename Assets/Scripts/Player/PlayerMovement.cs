@@ -3,7 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-//https://www.youtube.com/watch?v=KbtcEVCM7bw
+/// <remarks>
+/// responsibilities of this script include Jumping, Shotgun Knockback, ground friction, and gravity.
+/// Parts of code is taken from this youtube video - https://www.youtube.com/watch?v=KbtcEVCM7bw
+/// </remarks>
+
+/// <summary>
+/// This script manages player movement, and physics handling.
+/// </summary>
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -28,7 +35,6 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheckPoint;
     public Vector2 groundCheckSize;
 
-
     public float jumpInput;
     public bool canJump = true;
 
@@ -42,8 +48,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private InputActionReference movementInput, jump, shoot;
 
-
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -51,10 +55,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        //float horizontalInput = Input.GetAxis("Horizontal");
-        //float verticalInput = Input.GetAxis("Vertical");
-
-        //Vector2 movement = new Vector2(horizontalInput, verticalInput);
         shootAngle = crosshairTransform.rotation * Vector2.left;
 
         moveInput = movementInput.action.ReadValue<Vector2>();
@@ -63,7 +63,6 @@ public class PlayerMovement : MonoBehaviour
 
         shootInput = shoot.action.ReadValue<float>();
 
-        //rb.velocity = moveInput * speed;
         if(Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0, groundLayer)){
             isGrounded = true;
         }else
@@ -81,25 +80,16 @@ public class PlayerMovement : MonoBehaviour
             canJump = true;
         }
 
-        if(shootInput == 1 && canShoot)
-        {
-           //Shoot();
-        }
-
         if(shootInput == 0 && canShoot == false)
         {
             canShoot = true;
         }
-
-
-        
     }
 
     void FixedUpdate()
     {
         ApplyGravity();
 
-        
         if(moveInput.x > 0.01f && rb.velocity.x < moveSpeed)
         {
             Move();
@@ -110,7 +100,6 @@ public class PlayerMovement : MonoBehaviour
             Move();
         }
         Friction();
-
     }
 
     void ApplyGravity()
@@ -153,26 +142,19 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = false;
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         AudioManager.PlaySound(0); //jump sound
-        //Debug.Log("jump");
     }
 
     public void Shoot()
     {
         canShoot = false;
         AudioManager.PlaySound(1); //shoot sound
-        //Debug.Log("shoot");
         CameraShake.Shake(0.25f, 0.5f);
         rb.AddForce(shootAngle * shootForce, ForceMode2D.Impulse);
     }
-    /*
-    public void OnMove(InputAction.CallbackContext context)
-    {
-        moveInput = context.ReadValue<Vector2>();
-    }*/
+
     public void ResetMovement()
     {
         rb.velocity = Vector2.zero;
         rb.angularVelocity = 0;
     }
-
 }
