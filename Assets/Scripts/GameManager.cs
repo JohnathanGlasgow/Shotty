@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject player; // Reference to the player
     
-    private Vector3 initialPosition; // this variable stores the player's initial position
+    public Vector3 respawnPosition; // this variable stores the player's initial position
     private GameObject[] powerups; // array of game objects that will be reset
 
     #region Singleton
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         // store the player's initial position
-        initialPosition = player.transform.position;
+        respawnPosition = player.transform.position;
         // initialize the powerups array
         powerups = GameObject.FindGameObjectsWithTag("Powerup");
     }
@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
     public void ResetPlayer()
     {
         // reset the player's position
-        player.transform.position = initialPosition;
+        player.transform.position = respawnPosition;
         // set cooldown to false
         player.GetComponent<ShootController>().ResetCooldown();
         // reset movement
