@@ -20,7 +20,7 @@ public class GhostSprites : MonoBehaviour
     public Color ghostColor = Color.white;  // This is the global ghost color
     public float initialTransparency = 0.5f; // Initial transparency of the ghost sprite
     public bool sameColor = true; // If true, the ghost sprite will have the same color as the main sprite
-    public bool isActive = true; // If true, the ghost effect is active
+    // public bool isActive = true; // If true, the ghost effect is active
     public int poolSize = 10; // The size of the ghost pool, determines how many ghost sprites can be created at once
     private Queue<SpriteRenderer> ghostPool = new Queue<SpriteRenderer>(); // Queue to hold the ghost sprites in the pool
 
@@ -28,6 +28,28 @@ public class GhostSprites : MonoBehaviour
     private SpriteRenderer spriteRenderer; // Reference to the main sprite renderer
     private List<SpriteRenderer> ghostSprites = new List<SpriteRenderer>(); // List to hold all the ghost sprites
 
+    [SerializeField]
+    private bool _isActive = true; // backing field
+
+    public bool isActive
+    {
+        get { return _isActive; }
+        set
+        {
+            if (_isActive != value)
+            {
+                _isActive = value;
+                if (_isActive)
+                {
+                    StartCoroutine(CreateGhosts());
+                }
+                // else
+                // {
+                //     StopAllCoroutines();
+                // }
+            }
+        }
+    }
 
     /// <summary>
     /// Set up the object pool and start creating ghost sprites.
@@ -117,5 +139,10 @@ public class GhostSprites : MonoBehaviour
         ghostSpriteRenderer.gameObject.SetActive(false);
         // Return the ghost sprite to the pool
         ghostPool.Enqueue(ghostSpriteRenderer);
+    }
+
+    public void ActivateGhosting()
+    {
+        StartCoroutine(CreateGhosts());
     }
 }
