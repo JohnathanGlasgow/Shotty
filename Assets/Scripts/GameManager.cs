@@ -68,12 +68,14 @@ public class GameManager : MonoBehaviour
         // loop through powerups and reset them if inactive
         foreach (GameObject powerup in powerups)
         {
-            Powerup powerupComponent = powerup.GetComponent<Powerup>();
-
-            if (powerupComponent.Active)
+            // if chronomanager is not null, reset chronomanager
+            if (powerup.GetComponent<ChronoPowerup>() != null)
             {
-                powerupComponent.Reset();
+                ChronoManager chronoManager = ChronoManager.instance;
+                chronoManager.DeactivateSlomo();
             }
+            Powerup powerupComponent = powerup.GetComponent<Powerup>();
+            powerupComponent.Reset();
         }
     }
 
