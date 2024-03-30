@@ -8,6 +8,7 @@
  */
 
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -16,13 +17,20 @@ using UnityEngine;
 /// </summary>
 public abstract class Powerup : MonoBehaviour
 {
-    public float CooldownAmt = 1f; // the time it takes for the powerup to reset
+    public float CooldownAmt = 5.0f; // the cooldown of the powerup
     public float FadeSpeed = 0.01f; // the speed at which the powerup fades in
     protected float cooldown; // the current cooldown of the powerup
-    public bool Active;
-    protected Color color;
+    public bool isAvailable = true; // whether the powerup is is available or not
+
+    private Coroutine fadeInCoroutine;
+    private bool allFadedIn = false;
+
     protected SpriteRenderer spriteRenderer;
-    
+    protected List<SpriteRenderer> spriteRenderers;
+    // List to hold the initial alpha values of the sprites
+    protected List<float> initialAlphas;
+
+
 
 
     /// <summary>
@@ -30,19 +38,26 @@ public abstract class Powerup : MonoBehaviour
     /// </summary>
     protected virtual void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        color = spriteRenderer.color;
-        Active = true;
+        // Populate the list with all SpriteRenderers in this object and its children
+        spriteRenderers = new List<SpriteRenderer>(GetComponentsInChildren<SpriteRenderer>());
+
+        // Initialize the list of initial alpha values and populate it with the current alpha values of the sprites
+        initialAlphas = new List<float>();
+        foreach (SpriteRenderer sr in spriteRenderers)
+        {
+            initialAlphas.Add(sr.color.a);
+        }
         cooldown = CooldownAmt;
     }
+
 
     /// <summary>
     /// Update is called once per frame.
     /// </summary>
     protected virtual void Update()
     {
-        /// if the powerup is not Active decrement the Cooldown
-        if (Active == false)
+        /// if the powerup is not available decrement the Cooldown
+        if (isAvailable == false)
         {
             cooldown -= Time.deltaTime;
             // when the Cooldown reaches 0, reset the powerup
@@ -69,20 +84,42 @@ public abstract class Powerup : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            StopFadeIn();
             powerUpEffect(other);
-            deactivate();
+            Deactivate();
         }
     }
 
     /// <summary>
-    /// This method deactivates the powerup by making it invisible and disabling its collider.
+    /// This method Deactivates the powerup by making it invisible and disabling its collider.
     /// </summary>
-    protected void deactivate()
+    public void Deactivate()
     {
-        color.a = 0;
-        spriteRenderer.color = color;
-        Active = false;
+        // color.a = 0;
+        // spriteRenderer.color = color;
+        isAvailable = false;
         GetComponent<Collider2D>().enabled = false;
+        // Make all sprites invisible
+        foreach (SpriteRenderer sr in spriteRenderers)
+        {
+            Color color = sr.color;
+            color.a = 0;
+            sr.color = color;
+        }
+    }
+
+    public void StopFadeIn()
+    {
+        if (fadeInCoroutine != null)
+        {
+            StopCoroutine(fadeInCoroutine);
+        }
+    }
+
+    public void SetCooldownAmt(float value)
+    {
+        CooldownAmt = value;
+        cooldown = value;
     }
 
     /// <summary>
@@ -91,10 +128,22 @@ public abstract class Powerup : MonoBehaviour
     public void Reset()
     {
         // fade in the sprite
-        StartCoroutine(fadeIn());
-        Active = true;
-        GetComponent<Collider2D>().enabled = true;
+        fadeInCoroutine = StartCoroutine(fadeIn());
+        isAvailable = true;
+        Collider2D collider = GetComponent<Collider2D>();
+        collider.enabled = true;
         cooldown = CooldownAmt;
+
+        Collider2D playerCollider = Physics2D.OverlapBox(collider.bounds.center, collider.bounds.size, 0, LayerMask.GetMask("Player"));
+        if (playerCollider != null)
+        {
+            // The player is inside the collider
+            Debug.Log("Player is inside the collider");
+            //StopCoroutine(fadeInCoroutine);
+            allFadedIn = true;
+            // Deactivate();
+        }
+        //allFadedIn = true;
     }
 
     /// <summary>
@@ -103,13 +152,30 @@ public abstract class Powerup : MonoBehaviour
     /// <returns></returns>
     private IEnumerator fadeIn()
     {
-        // while the color is not fully opaque
-        while (color.a < 1)
+        allFadedIn = false;
+
+        while (!allFadedIn)
         {
-            // increment the alpha value
-            color.a += FadeSpeed;
-            // set the new color
-            spriteRenderer.color = color;
+            allFadedIn = true;
+
+            for (int i = 0; i < spriteRenderers.Count; i++)
+            {
+                SpriteRenderer sr = spriteRenderers[i];
+                Color color = sr.color;
+
+                if (color.a < initialAlphas[i])
+                {
+                    // increment the alpha value
+                    color.a += FadeSpeed;
+                    sr.color = color;
+
+                    if (color.a < initialAlphas[i])
+                    {
+                        allFadedIn = false;
+                    }
+                }
+            }
+
             // wait for a frame
             yield return null;
         }
