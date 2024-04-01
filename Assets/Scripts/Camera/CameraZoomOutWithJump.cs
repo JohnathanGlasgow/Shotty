@@ -42,9 +42,6 @@ public class CameraZoomOutWithJump : MonoBehaviour
         // get the player's position
         Vector3 playerPos = player.position;
 
-        // log player y velocity
-        Debug.Log(playerRb.velocity.y);
-
         // check if the player is moving up and within the buffer area
         if (playerRb.velocity.y > 0 && playerPos.y > mainCamera.transform.position.y + mainCamera.orthographicSize - buffer)
         {

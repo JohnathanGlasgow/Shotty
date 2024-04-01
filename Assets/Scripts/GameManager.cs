@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     
     public Vector3 respawnPosition; // this variable stores the player's initial position
     private GameObject[] powerups; // array of game objects that will be reset
+    private float initCameraSize; // initial camera size
 
     #region Singleton
     // singleton pattern
@@ -45,6 +46,8 @@ public class GameManager : MonoBehaviour
         respawnPosition = player.transform.position;
         // initialize the powerups array
         powerups = GameObject.FindGameObjectsWithTag("Powerup");
+        // store the initial camera size
+        initCameraSize = Camera.main.orthographicSize;
     }
 
     /// <summary>
@@ -85,6 +88,11 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ResetLevel()
     {
+        // reset the camera size
+        if (Camera.main.orthographicSize != initCameraSize)
+        {
+            Camera.main.orthographicSize = initCameraSize;
+        }
         resetPowerups();
         ResetPlayer();
     }
