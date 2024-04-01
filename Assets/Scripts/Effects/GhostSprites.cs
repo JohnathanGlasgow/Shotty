@@ -9,9 +9,11 @@
 
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
+/// <summary>
+/// This script creates ghost sprites that follow the main sprite.
+/// </summary>
 public class GhostSprites : MonoBehaviour
 {
     public int numberOfGhosts = 5;  // Number of ghost sprites to create
@@ -22,8 +24,7 @@ public class GhostSprites : MonoBehaviour
     public float initialTransparency = 0.5f; // Initial transparency of the ghost sprite
     public bool sameColor = true; // If true, the ghost sprite will have the same color as the main sprite
     public int poolSize = 10; // The size of the ghost pool, determines how many ghost sprites can be created at once
-    // list of the spriterenderes
-    private List<GameObject> ghosts = new List<GameObject>();
+    private List<GameObject> ghosts = new List<GameObject>(); // List to hold the ghost game objects
     private Queue<SpriteRenderer> ghostPool = new Queue<SpriteRenderer>(); // Queue to hold the ghost sprites in the pool
     private SpriteRenderer spriteRenderer; // Reference to the main sprite renderer
     [SerializeField]
@@ -50,8 +51,6 @@ public class GhostSprites : MonoBehaviour
                     Deactivate();
                 }
             }
-
-
         }
     }
 
@@ -81,7 +80,9 @@ public class GhostSprites : MonoBehaviour
         StartCoroutine(CreateGhosts());
     }
 
-    /// set all ghosts to inactive
+    /// <summary>
+    /// Deactivate all ghost sprites.
+    /// </summary>
     private void Deactivate()
     {
         foreach (GameObject ghost in ghosts)
@@ -129,6 +130,8 @@ public class GhostSprites : MonoBehaviour
     /// <summary>
     /// Fade the ghost sprite over time.
     /// </summary>
+    /// <param name="ghostSpriteRenderer">The ghost sprite renderer to fade</param>
+    /// <param name="lifetime">The lifetime of the ghost sprite</param>
     IEnumerator FadeGhost(SpriteRenderer ghostSpriteRenderer, float lifetime)
     {
         // Save the initial lifetime of the ghost sprite
@@ -154,10 +157,5 @@ public class GhostSprites : MonoBehaviour
         ghostSpriteRenderer.gameObject.SetActive(false);
         // Return the ghost sprite to the pool
         ghostPool.Enqueue(ghostSpriteRenderer);
-    }
-
-    public void ActivateGhosting()
-    {
-        StartCoroutine(CreateGhosts());
     }
 }

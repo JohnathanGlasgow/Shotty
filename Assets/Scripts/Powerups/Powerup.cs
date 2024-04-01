@@ -17,25 +17,25 @@ using UnityEngine;
 /// </summary>
 public abstract class Powerup : MonoBehaviour
 {
-    public float CooldownAmt = 5.0f; // the cooldown of the powerup
+    public float CooldownAmt = 5.0f;    // the cooldown of the powerup
     public float FadeSpeed = 0.01f; // the speed at which the powerup fades in
-    protected float cooldown; // the current cooldown of the powerup
     public bool isAvailable = true; // whether the powerup is is available or not
 
-    private Coroutine fadeInCoroutine;
-    private bool allFadedIn = false;
-
+    protected float cooldown;   // the current cooldown of the powerup
+    protected Coroutine fadeInCoroutine;
+    protected bool allFadedIn = false;
     protected SpriteRenderer spriteRenderer;
     protected List<SpriteRenderer> spriteRenderers;
-    // List to hold the initial alpha values of the sprites
-    protected List<float> initialAlphas;
-
-
-
+    protected List<float> initialAlphas;        // List to hold the initial alpha values of the sprites
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
+    /// <remarks>
+    /// Frankly the control flow of this class has gotten out a bit out of hand.
+    /// This is mainly due to complications with the fade in coroutine, which has to simultaneously fade in multiple sprites,
+    /// and the need to check if the player is in the trigger area on reset.
+    /// </remarks>
     protected virtual void Awake()
     {
         // Populate the list with all SpriteRenderers in this object and its children
@@ -49,7 +49,6 @@ public abstract class Powerup : MonoBehaviour
         }
         cooldown = CooldownAmt;
     }
-
 
     /// <summary>
     /// Update is called once per frame.
@@ -95,8 +94,6 @@ public abstract class Powerup : MonoBehaviour
     /// </summary>
     public void Deactivate()
     {
-        // color.a = 0;
-        // spriteRenderer.color = color;
         isAvailable = false;
         GetComponent<Collider2D>().enabled = false;
         // Make all sprites invisible
@@ -108,6 +105,9 @@ public abstract class Powerup : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This method stops the fade in coroutine.
+    /// </summary>
     public void StopFadeIn()
     {
         if (fadeInCoroutine != null)
@@ -116,6 +116,10 @@ public abstract class Powerup : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Setter for the CooldownAmt variable.
+    /// There's a reason this isn't a property but I forgot what it was.
+    /// </summary>
     public void SetCooldownAmt(float value)
     {
         CooldownAmt = value;
@@ -133,23 +137,17 @@ public abstract class Powerup : MonoBehaviour
         Collider2D collider = GetComponent<Collider2D>();
         collider.enabled = true;
         cooldown = CooldownAmt;
-
+        // check if the player is in the trigger area on reset
         Collider2D playerCollider = Physics2D.OverlapBox(collider.bounds.center, collider.bounds.size, 0, LayerMask.GetMask("Player"));
         if (playerCollider != null)
         {
-            // The player is inside the collider
-            Debug.Log("Player is inside the collider");
-            //StopCoroutine(fadeInCoroutine);
             allFadedIn = true;
-            // Deactivate();
         }
-        //allFadedIn = true;
     }
 
     /// <summary>
-    /// This method fades in the sprite of the powerup.
+    /// This method fades in the sprites of the powerup.
     /// </summary>
-    /// <returns></returns>
     private IEnumerator fadeIn()
     {
         allFadedIn = false;
@@ -158,6 +156,8 @@ public abstract class Powerup : MonoBehaviour
         {
             allFadedIn = true;
 
+            // loop through all the sprite renderers and fade them in until they reach their initial alpha values
+            // when they all fade in this ends the while loop
             for (int i = 0; i < spriteRenderers.Count; i++)
             {
                 SpriteRenderer sr = spriteRenderers[i];

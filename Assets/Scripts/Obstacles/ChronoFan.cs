@@ -1,15 +1,26 @@
-// this rotates on z-axis at the speed of the ChronoManager
+/*
+ * File: ChronoFan.cs
+ * -------------------------
+ * This file contains the implementation of the ChronoFan obstacle.
+ *
+ * Author: Johnathan
+ * Contributions: Assisted by GitHub Copilot
+ */
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Simple class that rotates the ChronoFan obstacle based on the ChronoManager's obstacle speed.
+/// </summary>
 public class ChronoFan : MonoBehaviour
 {
-    private float rotationSpeed;
     public bool clockwise = true;
+    private float rotationSpeed;
 
-    private void Update()
+    /// <summary>
+    /// Rotate the obstacle based on the ChronoManager's obstacle speed.
+    /// </summary>
+    void Update()
     {
         rotationSpeed = ChronoManager.instance.obstacleSpeed;
         if (clockwise)

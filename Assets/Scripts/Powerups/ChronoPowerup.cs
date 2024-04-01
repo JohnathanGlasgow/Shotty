@@ -1,5 +1,5 @@
 /*
- * File: RechargePowerup.cs
+ * File: ChronoPowerup.cs
  * -------------------------
  * This file contains the implementation of the powerup that slows down time.
  *
@@ -16,13 +16,15 @@ using UnityEngine;
 /// </summary>
 public class ChronoPowerup : Powerup
 {
-    // on start get the ChronoManager instance
     private ChronoManager chronoManager;
 
+    /// <summary>
+    /// Initialise ChronoManager and set cooldown amount.
+    /// </summary>
     private void Start()
     {
         chronoManager = ChronoManager.instance;
-        // set cooldown to match the chronoDuration
+        // set cooldown to match the chronoDuration from the ChronoManager
         SetCooldownAmt(chronoManager.chronoDuration + 0.1f);
     }
 
