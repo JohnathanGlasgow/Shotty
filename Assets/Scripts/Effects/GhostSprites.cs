@@ -9,6 +9,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class GhostSprites : MonoBehaviour
@@ -20,17 +21,18 @@ public class GhostSprites : MonoBehaviour
     public Color ghostColor = Color.white;  // This is the global ghost color
     public float initialTransparency = 0.5f; // Initial transparency of the ghost sprite
     public bool sameColor = true; // If true, the ghost sprite will have the same color as the main sprite
-    // public bool isActive = true; // If true, the ghost effect is active
     public int poolSize = 10; // The size of the ghost pool, determines how many ghost sprites can be created at once
+    // list of the spriterenderes
+    private List<GameObject> ghosts = new List<GameObject>();
     private Queue<SpriteRenderer> ghostPool = new Queue<SpriteRenderer>(); // Queue to hold the ghost sprites in the pool
-
-
     private SpriteRenderer spriteRenderer; // Reference to the main sprite renderer
-    private List<SpriteRenderer> ghostSprites = new List<SpriteRenderer>(); // List to hold all the ghost sprites
-
     [SerializeField]
     private bool _isActive = true; // backing field
 
+    /// <summary>
+    /// Property to control the ghosting effect.
+    /// If set to true, the ghost sprites will be created at regular intervals.
+    /// </summary>
     public bool isActive
     {
         get { return _isActive; }
@@ -43,11 +45,13 @@ public class GhostSprites : MonoBehaviour
                 {
                     StartCoroutine(CreateGhosts());
                 }
-                // else
-                // {
-                //     StopAllCoroutines();
-                // }
+                else
+                {
+                    Deactivate();
+                }
             }
+
+
         }
     }
 
@@ -62,6 +66,8 @@ public class GhostSprites : MonoBehaviour
         for (int i = 0; i < poolSize; i++)
         {
             GameObject ghost = new GameObject("Ghost");
+            /// add to ghosts
+            ghosts.Add(ghost);
             SpriteRenderer ghostSpriteRenderer = ghost.AddComponent<SpriteRenderer>();
             ghostSpriteRenderer.sprite = spriteRenderer.sprite;
             ghostSpriteRenderer.color = ghostColor;
@@ -73,6 +79,15 @@ public class GhostSprites : MonoBehaviour
         }
 
         StartCoroutine(CreateGhosts());
+    }
+
+    /// set all ghosts to inactive
+    private void Deactivate()
+    {
+        foreach (GameObject ghost in ghosts)
+        {
+            ghost.SetActive(false);
+        }
     }
 
     /// <summary>
