@@ -6,6 +6,8 @@ TagManager:
   tags:
   - MovingPlatform
   - Powerup
+  - Door
+  - Key
   layers:
   - Default
   - TransparentFX
