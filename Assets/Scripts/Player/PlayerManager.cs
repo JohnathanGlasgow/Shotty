@@ -27,9 +27,13 @@ public class PlayerManager : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Door"))
         {
-            Debug.Log("Door Open");
-            hasKey = false;
-            Destroy(other.gameObject);
+            if(hasKey == true)
+            {
+                Debug.Log("Door Open");
+                hasKey = false;
+                Destroy(other.gameObject);
+
+            }
         }
     }
 }
