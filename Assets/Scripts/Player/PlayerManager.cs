@@ -16,15 +16,11 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    //This method is called when another object enters the trigger
+    //This method is called when the player touches another trigger
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Other: " + other.gameObject.name);
-        
-        // Check if the object that entered the trigger has the tag you're interested in
-        if (other.gameObject.CompareTag("Key")) // Replace "Player" with your desired tag
+        if (other.gameObject.CompareTag("Key")) 
         {
-            Debug.Log("Key Grabbed");
             hasKey = true;
             
             key = Instantiate(keyFollowPrefab, other.gameObject.transform.position, Quaternion.identity);
@@ -35,7 +31,6 @@ public class PlayerManager : MonoBehaviour
         {
             if(hasKey == true)
             {
-                Debug.Log("Door Open");
                 hasKey = false;
                 Destroy(key);
                 Destroy(other.gameObject);
