@@ -28,6 +28,7 @@ public class ChronoManager : MonoBehaviour
     private bool isSlomoActive = false;
     private float initialSpeed;
     private float slomoEndTime; // Used for tracking when the slow-motion effect should end
+    private GhostSprites ghostSprites;
 
     #region Singleton
     // Singleton instance
@@ -51,8 +52,8 @@ public class ChronoManager : MonoBehaviour
     /// </summary>
     void Start()
     {
-        chronoPowerups.AddRange(FindObjectsOfType<ChronoPowerup>());
         initialSpeed = obstacleSpeed;
+        ghostSprites = player.GetComponent<GhostSprites>();
     }
 
     /// <summary>
@@ -68,23 +69,18 @@ public class ChronoManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Activates the slow-motion effect and deactivates all other chronoPowerups.
+    /// Activates the slow-motion effect
     /// </summary>
     public void ActivateSlomo()
-    {
-        isSlomoActive = true;
-        // for all chronoPowerups where isActive is true, deactivate
-        foreach (ChronoPowerup cp in chronoPowerups)
+    {   
+        // if the slow-motion effect is not already active
+        if (!isSlomoActive)
         {
-            if (cp.isAvailable)
-            {
-                cp.StopFadeIn();
-                cp.Deactivate();
-            }
+            isSlomoActive = true;
+            ghostSprites.isActive = true;
+            // Reduce the speed of the obstacles
+            obstacleSpeed *= speedReductionFactor;
         }
-        player.GetComponent<GhostSprites>().isActive = true;
-        // Reduce the speed of the obstacles
-        obstacleSpeed *= speedReductionFactor;
         // Set the time when the slow-motion effect should end
         slomoEndTime = Time.time + chronoDuration;
     }
@@ -95,7 +91,7 @@ public class ChronoManager : MonoBehaviour
     public void DeactivateSlomo()
     {
         isSlomoActive = false;
-        player.GetComponent<GhostSprites>().isActive = false;
+        ghostSprites.isActive = false;
         // Restore the speed of the obstacles
         obstacleSpeed = initialSpeed;
     }
