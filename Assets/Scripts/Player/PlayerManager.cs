@@ -6,6 +6,8 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance;
     public bool hasKey = false;
+    public GameObject keyFollowPrefab;
+    private GameObject key; 
     void Awake()
     {
         if(Instance == null)
@@ -18,11 +20,15 @@ public class PlayerManager : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Other: " + other.gameObject.name);
+        
         // Check if the object that entered the trigger has the tag you're interested in
         if (other.gameObject.CompareTag("Key")) // Replace "Player" with your desired tag
         {
             Debug.Log("Key Grabbed");
             hasKey = true;
+            
+            key = Instantiate(keyFollowPrefab, other.gameObject.transform.position, Quaternion.identity);
+            key.GetComponent<CameraFollow>().target = gameObject.transform;
             Destroy(other.gameObject);
         }
         else if (other.gameObject.CompareTag("Door"))
@@ -31,6 +37,7 @@ public class PlayerManager : MonoBehaviour
             {
                 Debug.Log("Door Open");
                 hasKey = false;
+                Destroy(key);
                 Destroy(other.gameObject);
 
             }

@@ -7398,6 +7398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasKey: 0
+  keyFollowPrefab: {fileID: 6388531423959818300, guid: 5358d765743294d448390cecc028bf04, type: 3}
 --- !u!1 &8294934584282595718
 GameObject:
   m_ObjectHideFlags: 0
