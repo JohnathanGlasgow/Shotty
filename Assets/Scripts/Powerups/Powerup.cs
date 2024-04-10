@@ -8,6 +8,7 @@
  */
 
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -16,23 +17,36 @@ using UnityEngine;
 /// </summary>
 public abstract class Powerup : MonoBehaviour
 {
-    public float CooldownAmt = 1f; // the time it takes for the powerup to reset
+    public float CooldownAmt = 5.0f;    // the cooldown of the powerup
     public float FadeSpeed = 0.01f; // the speed at which the powerup fades in
-    protected float cooldown; // the current cooldown of the powerup
-    public bool Active;
-    protected Color color;
-    protected SpriteRenderer spriteRenderer;
-    
+    public bool isAvailable = true; // whether the powerup is is available or not
 
+    protected float cooldown;   // the current cooldown of the powerup
+    protected Coroutine fadeInCoroutine;
+    protected bool allFadedIn = false;
+    protected SpriteRenderer spriteRenderer;
+    protected List<SpriteRenderer> spriteRenderers;
+    protected List<float> initialAlphas;        // List to hold the initial alpha values of the sprites
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
+    /// <remarks>
+    /// Frankly the control flow of this class has gotten out a bit out of hand.
+    /// This is mainly due to complications with the fade in coroutine, which has to simultaneously fade in multiple sprites,
+    /// and the need to check if the player is in the trigger area on reset.
+    /// </remarks>
     protected virtual void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        color = spriteRenderer.color;
-        Active = true;
+        // Populate the list with all SpriteRenderers in this object and its children
+        spriteRenderers = new List<SpriteRenderer>(GetComponentsInChildren<SpriteRenderer>());
+
+        // Initialize the list of initial alpha values and populate it with the current alpha values of the sprites
+        initialAlphas = new List<float>();
+        foreach (SpriteRenderer sr in spriteRenderers)
+        {
+            initialAlphas.Add(sr.color.a);
+        }
         cooldown = CooldownAmt;
     }
 
@@ -41,8 +55,8 @@ public abstract class Powerup : MonoBehaviour
     /// </summary>
     protected virtual void Update()
     {
-        /// if the powerup is not Active decrement the Cooldown
-        if (Active == false)
+        /// if the powerup is not available decrement the Cooldown
+        if (isAvailable == false)
         {
             cooldown -= Time.deltaTime;
             // when the Cooldown reaches 0, reset the powerup
@@ -69,20 +83,47 @@ public abstract class Powerup : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            StopFadeIn();
             powerUpEffect(other);
-            deactivate();
+            Deactivate();
         }
     }
 
     /// <summary>
-    /// This method deactivates the powerup by making it invisible and disabling its collider.
+    /// This method Deactivates the powerup by making it invisible and disabling its collider.
     /// </summary>
-    protected void deactivate()
+    public void Deactivate()
     {
-        color.a = 0;
-        spriteRenderer.color = color;
-        Active = false;
+        isAvailable = false;
         GetComponent<Collider2D>().enabled = false;
+        // Make all sprites invisible
+        foreach (SpriteRenderer sr in spriteRenderers)
+        {
+            Color color = sr.color;
+            color.a = 0;
+            sr.color = color;
+        }
+    }
+
+    /// <summary>
+    /// This method stops the fade in coroutine.
+    /// </summary>
+    public void StopFadeIn()
+    {
+        if (fadeInCoroutine != null)
+        {
+            StopCoroutine(fadeInCoroutine);
+        }
+    }
+
+    /// <summary>
+    /// Setter for the CooldownAmt variable.
+    /// There's a reason this isn't a property but I forgot what it was.
+    /// </summary>
+    public void SetCooldownAmt(float value)
+    {
+        CooldownAmt = value;
+        cooldown = value;
     }
 
     /// <summary>
@@ -91,25 +132,50 @@ public abstract class Powerup : MonoBehaviour
     public void Reset()
     {
         // fade in the sprite
-        StartCoroutine(fadeIn());
-        Active = true;
-        GetComponent<Collider2D>().enabled = true;
+        fadeInCoroutine = StartCoroutine(fadeIn());
+        isAvailable = true;
+        Collider2D collider = GetComponent<Collider2D>();
+        collider.enabled = true;
         cooldown = CooldownAmt;
+        // check if the player is in the trigger area on reset
+        Collider2D playerCollider = Physics2D.OverlapBox(collider.bounds.center, collider.bounds.size, 0, LayerMask.GetMask("Player"));
+        if (playerCollider != null)
+        {
+            allFadedIn = true;
+        }
     }
 
     /// <summary>
-    /// This method fades in the sprite of the powerup.
+    /// This method fades in the sprites of the powerup.
     /// </summary>
-    /// <returns></returns>
     private IEnumerator fadeIn()
     {
-        // while the color is not fully opaque
-        while (color.a < 1)
+        allFadedIn = false;
+
+        while (!allFadedIn)
         {
-            // increment the alpha value
-            color.a += FadeSpeed;
-            // set the new color
-            spriteRenderer.color = color;
+            allFadedIn = true;
+
+            // loop through all the sprite renderers and fade them in until they reach their initial alpha values
+            // when they all fade in this ends the while loop
+            for (int i = 0; i < spriteRenderers.Count; i++)
+            {
+                SpriteRenderer sr = spriteRenderers[i];
+                Color color = sr.color;
+
+                if (color.a < initialAlphas[i])
+                {
+                    // increment the alpha value
+                    color.a += FadeSpeed;
+                    sr.color = color;
+
+                    if (color.a < initialAlphas[i])
+                    {
+                        allFadedIn = false;
+                    }
+                }
+            }
+
             // wait for a frame
             yield return null;
         }
