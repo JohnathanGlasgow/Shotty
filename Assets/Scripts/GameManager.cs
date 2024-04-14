@@ -18,8 +18,14 @@ public class GameManager : MonoBehaviour
     public GameObject player; // Reference to the player
     
     public Vector3 respawnPosition; // this variable stores the player's initial position
+
+    // list of game objects that will be reset
+    public GameObject[] toReset;
+
     private GameObject[] powerups; // array of game objects that will be reset
     private float initCameraSize; // initial camera size
+    private Vector3[] initPositions; // initial positions of the game objects
+    private Quaternion[] initRotations; // initial rotations of the game objects
 
     #region Singleton
     // singleton pattern
@@ -48,6 +54,16 @@ public class GameManager : MonoBehaviour
         powerups = GameObject.FindGameObjectsWithTag("Powerup");
         // store the initial camera size
         initCameraSize = Camera.main.orthographicSize;
+        // store the initial positions of the game objects
+        initPositions = new Vector3[toReset.Length];
+        // store the initial rotations of the game objects
+        initRotations = new Quaternion[toReset.Length];
+        for (int i = 0; i < toReset.Length; i++)
+        {
+            initPositions[i] = toReset[i].transform.position;
+            initRotations[i] = toReset[i].transform.rotation;
+
+        }
     }
 
     /// <summary>
@@ -82,6 +98,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // reset game objects
+    private void ResetGameObjects()
+    {
+        for (int i = 0; i < toReset.Length; i++)
+        {
+            toReset[i].transform.position = initPositions[i];
+            toReset[i].transform.rotation = initRotations[i];
+        }
+    }
+
     /// <summary>
     /// This method resets the level.
     /// It is called by the OutOfBounds script.
@@ -94,6 +120,7 @@ public class GameManager : MonoBehaviour
             Camera.main.orthographicSize = initCameraSize;
         }
         resetPowerups();
+        ResetGameObjects();
         ResetPlayer();
     }
 }
