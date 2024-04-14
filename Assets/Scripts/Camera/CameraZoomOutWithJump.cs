@@ -17,6 +17,7 @@ public class CameraZoomOutWithJump : MonoBehaviour
     public Camera mainCamera;
     public Transform player;
     public float zoomOutSpeed = 0.1f;   /// speed at which the camera zooms out
+    public float zoomAdjustSpeed = 0.03f;   /// speed at which the camera zooms in when palyer not falling
     public float buffer = 1f;   /// player has to be this close to the top edge of the screen to trigger zoom out
     public float maxCameraSize = 50f;   /// maximum camera size to zoom out to
     public float minFallSpeedBeforeZoomIn = 1f;   /// wait until the player is falling at this speed before zooming in
@@ -68,6 +69,21 @@ public class CameraZoomOutWithJump : MonoBehaviour
                 mainCamera.orthographicSize = initialCameraSize;
             }
         }
+        else if  (playerRb.velocity.y == 0 && mainCamera.orthographicSize > initialCameraSize)
+        {
+            // decrease the camera size by zoom out speed
+            mainCamera.orthographicSize -= zoomAdjustSpeed;
+
+
+            // // check if the camera size is less than the initial size
+            // if (mainCamera.orthographicSize < initialCameraSize)
+            // {
+            //     // set the camera size to the initial size
+            //     mainCamera.orthographicSize = initialCameraSize;
+            // }
+            
+        }
+
 
         // store the player's y position
         previousPlayerY = playerPos.y;
