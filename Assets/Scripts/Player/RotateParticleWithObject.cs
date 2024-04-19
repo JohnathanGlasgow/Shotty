@@ -18,7 +18,7 @@ public class RotateParticleWithObject : MonoBehaviour
     public Transform TargetObject; // The object whose rotation you want to match
     public Vector3 RotationOffset; // Offset to apply to the rotation
 
-    private ParticleSystem particleSystem; // Reference to the Particle System
+    private ParticleSystem myParticleSystem; // Reference to the Particle System
 
     /// <summary>
     /// Start is called before the first frame update.
@@ -26,7 +26,7 @@ public class RotateParticleWithObject : MonoBehaviour
     private void Start()
     {
         // Get the Particle System component
-        particleSystem = GetComponent<ParticleSystem>();
+        myParticleSystem = GetComponent<ParticleSystem>();
     }
 
     /// <summary>
@@ -35,7 +35,7 @@ public class RotateParticleWithObject : MonoBehaviour
     private void Update()
     {
         // Check if the target object is not null and the Particle System is valid
-        if (TargetObject != null && particleSystem != null)
+        if (TargetObject != null && myParticleSystem != null)
         {
             // Match the rotation of the Particle System with the rotation of the target object
             Quaternion targetRotation = TargetObject.rotation * Quaternion.Euler(RotationOffset);
