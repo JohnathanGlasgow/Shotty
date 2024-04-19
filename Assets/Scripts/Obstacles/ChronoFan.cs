@@ -8,28 +8,37 @@
  */
 
 using UnityEngine;
+using System;
 
 /// <summary>
 /// Simple class that rotates the ChronoFan obstacle based on the ChronoManager's obstacle speed.
 /// </summary>
-public class ChronoFan : MonoBehaviour
+public class ChronoFan : Obstacle
 {
-    public bool clockwise = true;
-    private float rotationSpeed;
-
-    /// <summary>
-    /// Rotate the obstacle based on the ChronoManager's obstacle speed.
-    /// </summary>
-    void Update()
+    [SerializeField]
+    private bool _clockwise;
+    public bool clockwise
     {
-        rotationSpeed = ChronoManager.instance.obstacleSpeed;
-        if (clockwise)
+        get { return _clockwise; }
+        set
         {
-            transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
+            _clockwise = value;
+            SetClockwise(_clockwise);
         }
-        else
-        {
-            transform.Rotate(0, 0, -rotationSpeed * Time.deltaTime);
-        }
+    }
+
+    private void Start()
+    {
+        SetClockwise(_clockwise);
+    }
+
+    private void Update()
+    {
+        transform.Rotate(0, 0, MovementSpeed * Time.deltaTime);
+    }
+
+    private void SetClockwise(bool value)
+    {
+        MovementSpeed = _clockwise ? -Math.Abs(MovementSpeed) : Math.Abs(MovementSpeed);
     }
 }
