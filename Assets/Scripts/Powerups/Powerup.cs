@@ -139,10 +139,10 @@ public abstract class Powerup : MonoBehaviour
         cooldown = CooldownAmt;
         // check if the player is in the trigger area on reset
         Collider2D playerCollider = Physics2D.OverlapBox(collider.bounds.center, collider.bounds.size, 0, LayerMask.GetMask("Player"));
-        if (playerCollider != null)
-        {
-            allFadedIn = true;
-        }
+        // if (playerCollider != null)
+        // {
+        //     allFadedIn = true;
+        // }
     }
 
     /// <summary>
