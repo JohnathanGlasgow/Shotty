@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7740fd67fdf80dd4691487e13faef9fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShakeActive: 1
 --- !u!1 &8294934584159807065
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,4 +153,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   smoothSpeed: 0.05
-  offset: {x: 0, y: 0, z: -10}
+  offset: {x: 0, y: 0, z: -15}
