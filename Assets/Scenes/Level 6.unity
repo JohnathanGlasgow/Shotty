@@ -3695,6 +3695,10 @@ PrefabInstance:
       propertyPath: NextSceneName
       value: Level 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4244805494432201685, guid: caddd4f5f89ab4089896f4ab457e1471, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
