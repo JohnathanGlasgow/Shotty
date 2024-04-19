@@ -1311,7 +1311,7 @@ GameObject:
   - component: {fileID: 481878632}
   m_Layer: 0
   m_Name: ChronoFan
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1421,7 +1421,7 @@ GameObject:
   - component: {fileID: 487042738}
   m_Layer: 0
   m_Name: ChronoFan (1)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4799,7 +4799,7 @@ GameObject:
   - component: {fileID: 1709169755}
   m_Layer: 0
   m_Name: ChronoFan (2)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
