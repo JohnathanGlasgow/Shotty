@@ -7,7 +7,11 @@
  * Contributions: Assisted by GitHub Copilot
  */
 
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using System.Collections;
+
 
 /// <summary>
 /// This script manages the game state.
@@ -15,17 +19,18 @@ using UnityEngine;
 /// </summary>
 public class GameManager : MonoBehaviour
 {
+    public float delayBeforeReset = 0.5f; // delay before resetting the level
     public GameObject player; // Reference to the player
     
     public Vector3 respawnPosition; // this variable stores the player's initial position
 
     // list of game objects that will be reset
     public GameObject[] toReset;
-
+    public List<Obstacle> obstacles;
     private GameObject[] powerups; // array of game objects that will be reset
     private float initCameraSize; // initial camera size
-    private Vector3[] initPositions; // initial positions of the game objects
-    private Quaternion[] initRotations; // initial rotations of the game objects
+    private ChronoManager chronoManager;
+    private PlayerManager playerManager;
 
     #region Singleton
     // singleton pattern
@@ -48,22 +53,23 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void Start()
     {
+
         // store the player's initial position
         respawnPosition = player.transform.position;
         // initialize the powerups array
         powerups = GameObject.FindGameObjectsWithTag("Powerup");
         // store the initial camera size
         initCameraSize = Camera.main.orthographicSize;
-        // store the initial positions of the game objects
-        initPositions = new Vector3[toReset.Length];
-        // store the initial rotations of the game objects
-        initRotations = new Quaternion[toReset.Length];
-        for (int i = 0; i < toReset.Length; i++)
-        {
-            initPositions[i] = toReset[i].transform.position;
-            initRotations[i] = toReset[i].transform.rotation;
 
+        // populate the obstacles list
+        obstacles = new List<Obstacle>();
+        foreach (GameObject obstacle in GameObject.FindGameObjectsWithTag("Obstacle"))
+        {
+            obstacles.Add(obstacle.GetComponent<Obstacle>());
         }
+
+        chronoManager = ChronoManager.instance ?? null;
+        playerManager = PlayerManager.Instance ?? null;
     }
 
     /// <summary>
@@ -82,7 +88,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// This method resets the powerups.
     /// </summary>
-    private void resetPowerups()
+    private void ResetPowerups()
     {
         // loop through powerups and reset them if inactive
         foreach (GameObject powerup in powerups)
@@ -90,21 +96,11 @@ public class GameManager : MonoBehaviour
             // if chronomanager is not null, reset chronomanager
             if (powerup.GetComponent<ChronoPowerup>() != null)
             {
-                ChronoManager chronoManager = ChronoManager.instance;
-                chronoManager.DeactivateSlomo();
+                
+                //chronoManager.DeactivateSlomo();
             }
             Powerup powerupComponent = powerup.GetComponent<Powerup>();
             powerupComponent.Reset();
-        }
-    }
-
-    // reset game objects
-    private void ResetGameObjects()
-    {
-        for (int i = 0; i < toReset.Length; i++)
-        {
-            toReset[i].transform.position = initPositions[i];
-            toReset[i].transform.rotation = initRotations[i];
         }
     }
 
@@ -114,13 +110,22 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ResetLevel()
     {
-        // reset the camera size
+        StartCoroutine(ResetDelay());
+
+    }
+
+    private IEnumerator ResetDelay()
+    {
+        yield return new WaitForSeconds(delayBeforeReset);
+                // reset the camera size
         if (Camera.main.orthographicSize != initCameraSize)
         {
             Camera.main.orthographicSize = initCameraSize;
         }
-        resetPowerups();
-        ResetGameObjects();
+        obstacles.ForEach(obstacle => obstacle.Reset());
+        ResetPowerups();
         ResetPlayer();
+        chronoManager?.Reset();
+        playerManager?.Reset();
     }
 }

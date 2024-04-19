@@ -13,7 +13,7 @@ public class ChangeMovementOnCollision : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         // Check if the collided object has the MoveStraight script attached
-        MoveStraight moveStraightScript = other.gameObject.GetComponent<MoveStraight>();
+        Obstacle moveStraightScript = other.gameObject.GetComponent<Obstacle>();
         if (moveStraightScript != null)
         {
             // Change the movement flags

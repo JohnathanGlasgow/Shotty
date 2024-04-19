@@ -56,8 +56,8 @@ public class CameraZoomOutWithJump : MonoBehaviour
                 mainCamera.orthographicSize = maxCameraSize;
             }
         }
-        // check if the player is falling and falling faster than the minimum speed
-        else if (playerRb.velocity.y < -minFallSpeedBeforeZoomIn)
+        // check if the player is falling and falling faster than the minimum speed and on screen
+        else if (playerRb.velocity.y < -minFallSpeedBeforeZoomIn && playerPos.y < mainCamera.transform.position.y + mainCamera.orthographicSize - buffer)
         {
             // decrease the camera size by change in player y position
             mainCamera.orthographicSize -= previousPlayerY - playerPos.y;

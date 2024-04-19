@@ -10,6 +10,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// This script manages the slow-motion effect of the game.
@@ -20,13 +21,9 @@ using UnityEngine;
 public class ChronoManager : MonoBehaviour
 {
     public GameObject player;
-    public float obstacleSpeed = 1.0f;  // Speed of the obstacles
     public float chronoDuration = 5.0f; // Duration of the chrono powerup
-    public float speedReductionFactor = 0.5f;   // Speed reduction factor when the chrono powerup is active
-
-    private List<ChronoPowerup> chronoPowerups = new List<ChronoPowerup>();
+    public UnityEvent<bool> chronoEvent; // Event to trigger when the chrono powerup is activated
     private bool isSlomoActive = false;
-    private float initialSpeed;
     private float slomoEndTime; // Used for tracking when the slow-motion effect should end
     private GhostSprites ghostSprites;
 
@@ -52,7 +49,6 @@ public class ChronoManager : MonoBehaviour
     /// </summary>
     void Start()
     {
-        initialSpeed = obstacleSpeed;
         ghostSprites = player.GetComponent<GhostSprites>();
     }
 
@@ -72,14 +68,13 @@ public class ChronoManager : MonoBehaviour
     /// Activates the slow-motion effect
     /// </summary>
     public void ActivateSlomo()
-    {   
+    {
         // if the slow-motion effect is not already active
         if (!isSlomoActive)
         {
             isSlomoActive = true;
             ghostSprites.isActive = true;
-            // Reduce the speed of the obstacles
-            obstacleSpeed *= speedReductionFactor;
+            chronoEvent.Invoke(true);
         }
         // Set the time when the slow-motion effect should end
         slomoEndTime = Time.time + chronoDuration;
@@ -92,7 +87,13 @@ public class ChronoManager : MonoBehaviour
     {
         isSlomoActive = false;
         ghostSprites.isActive = false;
-        // Restore the speed of the obstacles
-        obstacleSpeed = initialSpeed;
+        chronoEvent.Invoke(false);
+    }
+
+    public void Reset()
+    {
+        if (isSlomoActive == false) { return; }
+        
+        DeactivateSlomo();
     }
 }

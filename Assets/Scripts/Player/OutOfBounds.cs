@@ -15,6 +15,7 @@ using UnityEngine;
 public class OutOfBounds : MonoBehaviour
 {
     private GameManager gameManager; // Reference to the GameManager
+    private PlayerManager playerManager; // Reference to the PlayerManager
 
     /// <summary>
     /// Start is called before the first frame update.
@@ -22,6 +23,7 @@ public class OutOfBounds : MonoBehaviour
     private void Start()
     {
         gameManager = GameManager.instance;
+        playerManager = PlayerManager.Instance;
     }
 
     /// <summary>
@@ -32,7 +34,8 @@ public class OutOfBounds : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            gameManager.ResetLevel();
+            playerManager?.Die();
+            gameManager?.ResetLevel();
         }
     }
 }
