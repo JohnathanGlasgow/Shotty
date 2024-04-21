@@ -85,7 +85,15 @@ public abstract class Powerup : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            breakParticles?.Play();
+            if(breakParticles)
+            {
+                breakParticles.Play();
+            }else
+            {
+                Debug.LogWarning($"breakParticles is not assigned on GameObject {gameObject.name}!");
+            }
+            
+            
             StopFadeIn();
             powerUpEffect(other);
             Deactivate();
