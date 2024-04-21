@@ -1021,6 +1021,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &76847237
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 76847238}
+  m_Layer: 6
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &76847238
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76847237}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 855856934}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &84392676
 GameObject:
   m_ObjectHideFlags: 0
@@ -7607,6 +7638,7 @@ GameObject:
   - component: {fileID: 855856933}
   - component: {fileID: 855856932}
   - component: {fileID: 855856931}
+  - component: {fileID: 855856935}
   m_Layer: 6
   m_Name: Lava
   m_TagString: Untagged
@@ -7735,9 +7767,26 @@ Transform:
   m_LocalPosition: {x: 124.3085, y: 5.3362, z: 0}
   m_LocalScale: {x: 35.28009, y: 13.510112, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 76847238}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &855856935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855856930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69f49d4a933b149a2a27cea856e3119a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  distance: 1
+  startMovingUp: 1
+  moveVertically: 1
 --- !u!1 &856607479
 GameObject:
   m_ObjectHideFlags: 0
@@ -8310,6 +8359,7 @@ GameObject:
   - component: {fileID: 911095016}
   - component: {fileID: 911095015}
   - component: {fileID: 911095014}
+  - component: {fileID: 911095018}
   m_Layer: 6
   m_Name: Lava (1)
   m_TagString: Untagged
@@ -8441,6 +8491,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &911095018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911095013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69f49d4a933b149a2a27cea856e3119a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  distance: 1
+  startMovingUp: 1
+  moveVertically: 1
 --- !u!1 &915984713
 GameObject:
   m_ObjectHideFlags: 0
@@ -13180,7 +13246,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1544148985
 Transform:
   m_ObjectHideFlags: 0
@@ -17875,20 +17941,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 674143776136193433, guid: 3bbc69407d5434a45a5520f307d42dc7, type: 3}
       propertyPath: m_Color.b
-      value: 0.52156866
+      value: 0.30588236
       objectReference: {fileID: 0}
     - target: {fileID: 674143776136193433, guid: 3bbc69407d5434a45a5520f307d42dc7, type: 3}
       propertyPath: m_Color.g
-      value: 0.70980394
+      value: 0.30588236
       objectReference: {fileID: 0}
     - target: {fileID: 674143776136193433, guid: 3bbc69407d5434a45a5520f307d42dc7, type: 3}
       propertyPath: m_Color.r
-      value: 0.94509804
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 674143776136193433, guid: 3bbc69407d5434a45a5520f307d42dc7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ccbf94b7d60df9f4d928b387fe133548, type: 2}
+      objectReference: {fileID: 2100000, guid: 80ab5e443cc163048ac8cdd2909af416, type: 2}
     - target: {fileID: 2402365481558179166, guid: 3bbc69407d5434a45a5520f307d42dc7, type: 3}
       propertyPath: m_Color.b
       value: 0.52156866
@@ -17955,15 +18021,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7292804137937756493, guid: 3bbc69407d5434a45a5520f307d42dc7, type: 3}
       propertyPath: CooldownInactiveColor.b
-      value: 0.52156866
+      value: 0.30588236
       objectReference: {fileID: 0}
     - target: {fileID: 7292804137937756493, guid: 3bbc69407d5434a45a5520f307d42dc7, type: 3}
       propertyPath: CooldownInactiveColor.g
-      value: 0.70980394
+      value: 0.30588236
       objectReference: {fileID: 0}
     - target: {fileID: 7292804137937756493, guid: 3bbc69407d5434a45a5520f307d42dc7, type: 3}
       propertyPath: CooldownInactiveColor.r
-      value: 0.94509804
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7525904621407762001, guid: 3bbc69407d5434a45a5520f307d42dc7, type: 3}
       propertyPath: m_Enabled
