@@ -5,11 +5,6 @@ public class GameCompletePanel : MonoBehaviour
     public GameObject gameCompletePanel;
     public GameObject player;
 
-    public void Quit()
-    {
-        Application.Quit();
-    }
-
     public void Restart()
     {
         Time.timeScale = 1;

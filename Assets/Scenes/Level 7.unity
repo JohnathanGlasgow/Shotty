@@ -32793,6 +32793,7 @@ GameObject:
   - component: {fileID: 1517369829}
   - component: {fileID: 1517369828}
   - component: {fileID: 1517369827}
+  - component: {fileID: 1517369830}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -32864,8 +32865,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1092667816}
-        m_TargetAssemblyTypeName: GameCompletePanel, Assembly-CSharp
+      - m_Target: {fileID: 1517369830}
+        m_TargetAssemblyTypeName: GameQuit, Assembly-CSharp
         m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
@@ -32914,6 +32915,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517369825}
   m_CullTransparentMesh: 1
+--- !u!114 &1517369830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517369825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 221f353e4031c46428e7ca9178e53ec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1529778920
 GameObject:
   m_ObjectHideFlags: 0
