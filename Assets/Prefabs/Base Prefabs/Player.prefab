@@ -469,7 +469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CooldownInactiveColor: {r: 1, g: 0.30588236, b: 0.30588236, a: 1}
   CooldownActiveColor: {r: 1, g: 1, b: 1, a: 1}
-  CooldownTime: 3
+  CooldownTime: 2
   CooldownActive: 0
   SpriteRenderer: {fileID: 674143776136193433}
   ParticleSystem: {fileID: 1808990407015344466}
