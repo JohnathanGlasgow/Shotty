@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1706827701852804354}
   - component: {fileID: 8844836089997435275}
   - component: {fileID: 3560866875133406500}
+  - component: {fileID: 3436050341196704837}
   m_Layer: 0
   m_Name: Recharge
   m_TagString: Powerup
@@ -160,3 +161,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CooldownAmt: 1
   FadeSpeed: 0.01
+  isAvailable: 1
+--- !u!114 &3436050341196704837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8820067035077250854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cbef201713bb40479aa7c76f22f1f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffect: {fileID: 8300000, guid: 573f91b6960c11a4fb9a3ad9d594b4fd, type: 3}
