@@ -12,6 +12,7 @@ using UnityEngine;
 public class ObjectSoundEffect : MonoBehaviour
 {
     public AudioClip soundEffect; ///Make sure to assign this variable in the editor  
+    public float audioVolume = 0.5f;
     private AudioSource audioSource;
 
     private void Start()
@@ -21,6 +22,7 @@ public class ObjectSoundEffect : MonoBehaviour
         audioSource = audioSource ? gameObject.GetComponent<AudioSource>() : gameObject.AddComponent<AudioSource>();
 
         audioSource.clip = soundEffect; //The audio source is set to the soundEffect variable. NOTE: don't set audioClip on the AudioSource in editor
+        audioSource.volume = audioVolume;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

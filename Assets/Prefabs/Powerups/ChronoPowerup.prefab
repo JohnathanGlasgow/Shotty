@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 7469748062222112208}
   - component: {fileID: 1501936006641560005}
   - component: {fileID: 1134395571322305841}
+  - component: {fileID: 3966325943020962858}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Powerup
@@ -283,6 +284,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &3966325943020962858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6309594814482301064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cbef201713bb40479aa7c76f22f1f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffect: {fileID: 8300000, guid: d9abff9c07b44764dbc1ab871a917f0c, type: 3}
 --- !u!1 &8142253058162418337
 GameObject:
   m_ObjectHideFlags: 0
