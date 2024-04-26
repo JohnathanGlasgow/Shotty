@@ -8,9 +8,10 @@ public class MusicManager : MonoBehaviour
     public AudioClip[] variations;
     private int currentVariationIndex = 0;
     public int desiredVariationIndex = 0;
-    public float trackLength;
-    public float sectionLength;
+    private float trackLength;
+    private float sectionLength;
     private float timer = 0;
+    public int trackSections = 8;
     private void Start()
     {   
         if (variations.Length == 0) //There are no songs loaded
@@ -21,7 +22,7 @@ public class MusicManager : MonoBehaviour
         audioSource.clip = variations[currentVariationIndex];
         audioSource.Play();
         trackLength = audioSource.clip.length;
-        sectionLength = trackLength / 16; //Divide track into 16 sections
+        sectionLength = trackLength / trackSections; //Divide track into 16 sections
     }
 
     private void Update()
