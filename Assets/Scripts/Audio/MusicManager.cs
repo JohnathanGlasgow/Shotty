@@ -29,21 +29,26 @@ public class MusicManager : MonoBehaviour
         timer += Time.deltaTime;
         if(timer >= sectionLength && sectionLength != 0)
         {
-            Debug.Log("hi");
+            if(desiredVariationIndex != currentVariationIndex)
+            {
+                ChangeTrack();
+            }
             timer = 0;
         }
     }
 
-    public void ChangeTrack(int index)
+    public void ChangeTrackIndex(int index) //This should be called from the editor. This queues up a new track
     {
-        currentVariationIndex = index;
+        desiredVariationIndex = index; //changes desired track index to new value   
+    }
 
+    private void ChangeTrack()
+    {
+        currentVariationIndex = desiredVariationIndex;
         float currentPosition = audioSource.time;
 
         audioSource.clip = variations[currentVariationIndex];
         audioSource.time = currentPosition;
         audioSource.Play();
     }
-
-    
 }
