@@ -123,6 +123,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 3134976993297756243}
+    - target: {fileID: 7121676825764033850, guid: 76bb918aad831294790b5ffdbd988004, type: 3}
+      propertyPath: smoothSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8294934584159807065, guid: 76bb918aad831294790b5ffdbd988004, type: 3}
       propertyPath: m_Name
       value: Camera Follow Object
