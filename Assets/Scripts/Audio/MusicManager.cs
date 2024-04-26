@@ -7,7 +7,7 @@ public class MusicManager : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip[] variations;
     private int currentVariationIndex = 0;
-    public int desiredVariationIndex = 0;
+    private int desiredVariationIndex = 0;
     private float trackLength;
     private float sectionLength;
     private float timer = 0;
