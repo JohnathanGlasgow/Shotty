@@ -12430,7 +12430,7 @@ GameObject:
   - component: {fileID: 1424864028}
   m_Layer: 0
   m_Name: Music
-  m_TagString: Untagged
+  m_TagString: Music
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19084,6 +19084,7 @@ GameObject:
   - component: {fileID: 3979955508603355704}
   - component: {fileID: 2183778955345255908}
   - component: {fileID: 5104802961084087803}
+  - component: {fileID: 5588478979921792709}
   m_Layer: 0
   m_Name: Audio Manager
   m_TagString: Untagged
@@ -19091,6 +19092,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5588478979921792709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5588478979921792708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5db9536d25c9eae409486b6667e955fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6348046428959760559
 MonoBehaviour:
   m_ObjectHideFlags: 0
