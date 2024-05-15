@@ -19,6 +19,13 @@ public class DontDestroyLoad : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        GameObject[] audioObject = GameObject.FindGameObjectsWithTag("Audio");
+        if(audioObject.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+
         DontDestroyOnLoad(this.gameObject);
     }
 }
