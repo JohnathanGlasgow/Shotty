@@ -26,6 +26,7 @@ public class AdvanceScene : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // Load the next scene
+            
             SceneManager.LoadScene(NextSceneName);
         }
     }

@@ -12,8 +12,24 @@ public class MusicManager : MonoBehaviour
     private float sectionLength;
     private float timer = 0;
     public int trackSections = 8;
+    public static MusicManager instance;
+
+    void Awake ()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            Debug.LogError("MusicManager instance already exists. Destroying duplicate.");
+            return;
+        }
+    }
     private void Start()
-    {   
+    {
+       
         if (variations.Length == 0) //There are no songs loaded
         {
             return;   

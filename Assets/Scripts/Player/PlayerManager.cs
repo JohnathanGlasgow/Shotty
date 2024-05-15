@@ -99,5 +99,6 @@ public class PlayerManager : MonoBehaviour
         main.startSpeed = playerRb.velocity.magnitude;
         player.SetActive(false);
         deathParticles.Play();
+        AudioManager.PlaySound(3); //death sound
     }
 }
