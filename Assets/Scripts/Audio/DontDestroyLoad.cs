@@ -26,6 +26,12 @@ public class DontDestroyLoad : MonoBehaviour
             Destroy(this.gameObject);
         }
 
+        GameObject[] timerObject = GameObject.FindGameObjectsWithTag("Timer");
+        if(timerObject.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+
         DontDestroyOnLoad(this.gameObject);
     }
 }

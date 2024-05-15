@@ -19,6 +19,8 @@ public class StartMenu : MonoBehaviour
         player.GetComponent<Rigidbody2D>().simulated = true;
         // disable crosshair movement script of child rotate point
         player.transform.Find("RotatePoint").GetComponent<CrosshairMovement>().enabled = true;
+
+        Timer.instance.StartTimer();
     }
 
 }
