@@ -20,7 +20,11 @@ public class StartMenu : MonoBehaviour
         // disable crosshair movement script of child rotate point
         player.transform.Find("RotatePoint").GetComponent<CrosshairMovement>().enabled = true;
 
-        Timer.instance.StartTimer();
+        if(Timer.instance != null)
+        {
+            Timer.instance.StartTimer();
+
+        }
     }
 
 }
