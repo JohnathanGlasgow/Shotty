@@ -19347,11 +19347,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &872968446 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1267850162908319231, guid: caddd4f5f89ab4089896f4ab457e1471, type: 3}
-  m_PrefabInstance: {fileID: 1162479334}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &874156306
 GameObject:
   m_ObjectHideFlags: 0
@@ -24033,8 +24028,7 @@ Transform:
   m_LocalPosition: {x: 0, y: -7, z: 0}
   m_LocalScale: {x: 7, y: 7, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 872968446}
+  m_Children: []
   m_Father: {fileID: 2024091635}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1089773141
@@ -26691,7 +26685,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1089773140}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 461630629983776540, guid: caddd4f5f89ab4089896f4ab457e1471, type: 3}
       propertyPath: m_Name
@@ -26699,11 +26693,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1267850162908319231, guid: caddd4f5f89ab4089896f4ab457e1471, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.14285715
+      value: 14.19
       objectReference: {fileID: 0}
     - target: {fileID: 1267850162908319231, guid: caddd4f5f89ab4089896f4ab457e1471, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2857143
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1267850162908319231, guid: caddd4f5f89ab4089896f4ab457e1471, type: 3}
       propertyPath: m_LocalScale.z
@@ -26711,11 +26705,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1267850162908319231, guid: caddd4f5f89ab4089896f4ab457e1471, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.63
+      value: 29.08
       objectReference: {fileID: 0}
     - target: {fileID: 1267850162908319231, guid: caddd4f5f89ab4089896f4ab457e1471, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.19
+      value: 31.61
       objectReference: {fileID: 0}
     - target: {fileID: 1267850162908319231, guid: caddd4f5f89ab4089896f4ab457e1471, type: 3}
       propertyPath: m_LocalPosition.z
@@ -26752,6 +26746,10 @@ PrefabInstance:
     - target: {fileID: 2842424591972896447, guid: caddd4f5f89ab4089896f4ab457e1471, type: 3}
       propertyPath: NextSceneName
       value: Level 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4244805494432201685, guid: caddd4f5f89ab4089896f4ab457e1471, type: 3}
+      propertyPath: m_SortingOrder
+      value: -9
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2842424591972896447, guid: caddd4f5f89ab4089896f4ab457e1471, type: 3}
@@ -47641,6 +47639,7 @@ SceneRoots:
   - {fileID: 2114835903822013000}
   - {fileID: 252962388}
   - {fileID: 1208661493}
+  - {fileID: 1162479334}
   - {fileID: 1609705563}
   - {fileID: 242346802}
   - {fileID: 2115608965}
