@@ -56,14 +56,19 @@ public class Timer : MonoBehaviour
         UpdateTimerDisplay();
     }
 
-    void UpdateTimerDisplay()
+    public string FormatTime()
     {
         int minutes = Mathf.FloorToInt(elapsedTime / 60);
         int seconds = Mathf.FloorToInt(elapsedTime % 60);
         int milliseconds = Mathf.FloorToInt((elapsedTime * 1000) % 1000);
 
         string timerString = string.Format("{0:00}:{1:00}.{2:00}", minutes, seconds, milliseconds / 10);
-        timerText.text = timerString;
-        timerTextShadow.text = timerString;
+        return timerString;
+    }
+
+    void UpdateTimerDisplay()
+    {
+        timerText.text = FormatTime();
+        timerTextShadow.text = FormatTime();
     }
 }
