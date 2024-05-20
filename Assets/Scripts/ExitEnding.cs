@@ -17,7 +17,10 @@ public class ExitEnding : MonoBehaviour
         if(exitInput == 1)
         {
             SceneManager.LoadScene(NextSceneName);
-            Timer.instance.ResetTimer();
+            if(Timer.instance != null)
+            {
+                Timer.instance.ResetTimer();
+            }
         }
     }
 }
