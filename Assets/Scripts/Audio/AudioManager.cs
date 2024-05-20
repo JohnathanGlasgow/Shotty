@@ -48,6 +48,9 @@ public class AudioManager : MonoBehaviour
     /// <param name="soundIndex"></param>
     public static void PlaySound(int soundIndex)
     {
-        Instance.onPlaySound(soundIndex);
+        if (Instance != null)
+        {
+            Instance.onPlaySound(soundIndex);
+        }
     }
 }
