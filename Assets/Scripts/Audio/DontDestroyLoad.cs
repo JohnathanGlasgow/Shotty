@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <remarks>
-/// Code taken from:
-/// https://www.youtube.com/watch?v=Xtfe5S9n4SI
+/// NOTE: This script could probably be deleted and DontDestroyOnLoad could be added to the respective manager scripts.
 /// </remarks>
 
 /// <summary>
-/// 
+/// This script is attached to gameobjects that should persist between scenes.
+/// Specifically used for timer and audio managers
 /// </summary>
 public class DontDestroyLoad : MonoBehaviour
 {
     private void Awake()
     {
+        //All these checks are to ensure that only one instance is created.
         GameObject[] musicObject = GameObject.FindGameObjectsWithTag("Music");
         if(musicObject.Length > 1)
         {
@@ -32,6 +33,7 @@ public class DontDestroyLoad : MonoBehaviour
             Destroy(this.gameObject);
         }
 
+        //This line is doing all the work.
         DontDestroyOnLoad(this.gameObject);
     }
 }

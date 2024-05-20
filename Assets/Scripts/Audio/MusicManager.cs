@@ -54,9 +54,22 @@ public class MusicManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Changes the track index to the desired index
+    /// </summary>
+    /// <param name="index"></param>
     public void ChangeTrackIndex(int index) //This should be called from the editor. This queues up a new track
     {
-        desiredVariationIndex = index; //changes desired track index to new value   
+        //make sure the index is within the bounds of the array
+        if(index < 0 || index >= variations.Length)
+        {
+            //round index to value within range.
+            index = Mathf.Clamp(index, 0, variations.Length - 1);
+            Debug.LogError("Track index out of bounds, rounding to value within range.");
+            return;
+        }else{
+            desiredVariationIndex = index; //changes desired track index to new value.
+        }
     }
 
     private void ChangeTrack()
