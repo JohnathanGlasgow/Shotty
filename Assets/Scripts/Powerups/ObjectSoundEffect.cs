@@ -17,9 +17,12 @@ public class ObjectSoundEffect : MonoBehaviour
 
     private void Start()
     {
+        /*
         //sets audioSource to the audiosource component of the GameObject this script is attached to.
         //if there is no audioSource object, one is created.
-        audioSource = audioSource ? gameObject.GetComponent<AudioSource>() : gameObject.AddComponent<AudioSource>();
+        audioSource = audioSource ? gameObject.GetComponent<AudioSource>() : gameObject.AddComponent<AudioSource>();*/
+
+        audioSource = AudioManager.Instance.audioSource; //Originally I created audiosource at runtime, but this didn't work with the mute SFX system
 
         audioSource.clip = soundEffect; //The audio source is set to the soundEffect variable. NOTE: don't set audioClip on the AudioSource in editor
         audioSource.volume = audioVolume;

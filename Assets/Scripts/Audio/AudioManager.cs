@@ -13,7 +13,9 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
-    private AudioSource audioSource;
+    
+    [HideInInspector] //This is assigned automatically
+    public AudioSource audioSource;
 
     public AudioClip[] audioClips;      //Assign audio clips in editor
 
