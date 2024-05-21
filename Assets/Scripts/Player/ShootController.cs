@@ -24,6 +24,9 @@ public class ShootController : MonoBehaviour
     public SpriteRenderer SpriteRenderer; // Reference to the Sprite Renderer
     public ParticleSystem ParticleSystem; // Reference to the Particle System
 
+
+    public ParticleSystem ReloadParticle;
+
     private float cooldown = 0.0f; // Current cooldown time
 
     #region PlayerMovement stuff
@@ -100,7 +103,8 @@ public class ShootController : MonoBehaviour
         if (cooldown > CooldownTime)
         {
             cooldown = 0.0f;
-            AudioManager.PlaySound(2); //reload sound
+            AudioManager.PlaySound(2); //reload soundf
+            ReloadParticle?.Play();
             CooldownActive = false;
         }
     }
