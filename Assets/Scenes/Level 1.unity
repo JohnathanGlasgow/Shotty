@@ -381,7 +381,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &23668825
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2422,7 +2422,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224244913}
-  - component: {fileID: 224244916}
   - component: {fileID: 224244915}
   - component: {fileID: 224244914}
   m_Layer: 5
@@ -2585,14 +2584,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!222 &224244916
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 224244912}
-  m_CullTransparentMesh: 1
 --- !u!1 &226315275
 GameObject:
   m_ObjectHideFlags: 0
@@ -5640,6 +5631,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 970827989}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &565178665
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 565178667}
+  - component: {fileID: 565178666}
+  m_Layer: 0
+  m_Name: Settings Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &565178666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565178665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1468e84ffaca0dd49853e8bd77f18f8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  muteSFX: 0
+  muteMusic: 0
+  timerOn: 0
+--- !u!4 &565178667
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565178665}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &571657492
 GameObject:
   m_ObjectHideFlags: 0
@@ -7452,7 +7490,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 775714152}
-  - component: {fileID: 775714155}
   - component: {fileID: 775714154}
   - component: {fileID: 775714153}
   m_Layer: 5
@@ -7615,14 +7652,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!222 &775714155
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 775714151}
-  m_CullTransparentMesh: 1
 --- !u!1 &784526258
 GameObject:
   m_ObjectHideFlags: 0
@@ -8182,7 +8211,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 799405432}
-  - component: {fileID: 799405435}
   - component: {fileID: 799405434}
   - component: {fileID: 799405433}
   m_Layer: 5
@@ -8345,14 +8373,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!222 &799405435
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 799405431}
-  m_CullTransparentMesh: 1
 --- !u!1 &803273579
 GameObject:
   m_ObjectHideFlags: 0
@@ -11284,7 +11304,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1042289352}
-  - component: {fileID: 1042289355}
   - component: {fileID: 1042289354}
   - component: {fileID: 1042289353}
   m_Layer: 5
@@ -11447,14 +11466,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!222 &1042289355
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1042289351}
-  m_CullTransparentMesh: 1
 --- !u!1 &1065121967
 GameObject:
   m_ObjectHideFlags: 0
@@ -12621,9 +12632,9 @@ RectTransform:
   - {fileID: 775714152}
   m_Father: {fileID: 2062880938}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1021, y: -16.666666}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1207133360
@@ -14319,7 +14330,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1377344253}
   - component: {fileID: 1377344255}
-  - component: {fileID: 1377344254}
+  - component: {fileID: 1377344256}
   m_Layer: 5
   m_Name: Timer Off
   m_TagString: Untagged
@@ -14343,25 +14354,11 @@ RectTransform:
   - {fileID: 1651002577}
   m_Father: {fileID: 2062880938}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1021, y: -83.33333}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1377344254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1377344252}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09ea92176b0725d46832541cae29423f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioMixer: {fileID: 24100000, guid: 5b7bf3552b909874f9210841e185ca33, type: 2}
-  groupName: SFX
 --- !u!114 &1377344255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14442,6 +14439,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1377344256}
+        m_TargetAssemblyTypeName: ToggleTimer, Assembly-CSharp
+        m_MethodName: ToggleTimerOn
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &1377344256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377344252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5410b4a9462c9bd4dacaec36650d5322, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onButton: 0
 --- !u!1 &1412238600
 GameObject:
   m_ObjectHideFlags: 0
@@ -14787,7 +14809,7 @@ GameObject:
   - component: {fileID: 1437922501}
   - component: {fileID: 1437922500}
   m_Layer: 5
-  m_Name: Music Mute ON (1)
+  m_Name: SFX Mute ON (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14917,7 +14939,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1447911421}
-  - component: {fileID: 1447911424}
   - component: {fileID: 1447911423}
   - component: {fileID: 1447911422}
   m_Layer: 5
@@ -15080,14 +15101,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!222 &1447911424
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1447911420}
-  m_CullTransparentMesh: 1
 --- !u!1 &1452391442
 GameObject:
   m_ObjectHideFlags: 0
@@ -16410,7 +16423,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1651002577}
-  - component: {fileID: 1651002580}
   - component: {fileID: 1651002579}
   - component: {fileID: 1651002578}
   m_Layer: 5
@@ -16573,14 +16585,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!222 &1651002580
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1651002576}
-  m_CullTransparentMesh: 1
 --- !u!1 &1651043970
 GameObject:
   m_ObjectHideFlags: 0
@@ -17961,7 +17965,7 @@ GameObject:
   - component: {fileID: 1773860026}
   - component: {fileID: 1773860025}
   m_Layer: 5
-  m_Name: Music Mute OFF (1)
+  m_Name: SFX Mute OFF (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17983,9 +17987,9 @@ RectTransform:
   - {fileID: 1447911421}
   m_Father: {fileID: 2062880938}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1021, y: -50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1773860025
@@ -19897,28 +19901,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1924547238}
   - component: {fileID: 1924547237}
-  - component: {fileID: 1924547236}
+  - component: {fileID: 1924547239}
   m_Layer: 5
   m_Name: Timer On
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1924547236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1924547235}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09ea92176b0725d46832541cae29423f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioMixer: {fileID: 24100000, guid: 5b7bf3552b909874f9210841e185ca33, type: 2}
-  groupName: SFX
+  m_IsActive: 1
 --- !u!114 &1924547237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19999,6 +19989,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1924547239}
+        m_TargetAssemblyTypeName: ToggleTimer, Assembly-CSharp
+        m_MethodName: ToggleTimerOn
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &1924547238
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20015,11 +20017,24 @@ RectTransform:
   - {fileID: 799405432}
   m_Father: {fileID: 2062880938}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1021, y: -62.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1924547239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924547235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5410b4a9462c9bd4dacaec36650d5322, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onButton: 1
 --- !u!1 &1952096012
 GameObject:
   m_ObjectHideFlags: 0
@@ -21211,7 +21226,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2062880938
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22224,6 +22239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36aefa9de5d84b34c9a1ad96581efbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   audioClips:
   - {fileID: 8300000, guid: f9bf521d24657ad4694629abc8675dca, type: 3}
   - {fileID: 8300000, guid: a9b1762817c3ed24da06b5fd6fb3cab6, type: 3}
@@ -22607,3 +22623,4 @@ SceneRoots:
   - {fileID: 960688571}
   - {fileID: 803273581}
   - {fileID: 103930117}
+  - {fileID: 565178667}

@@ -24,6 +24,9 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
+        timerText.enabled = Settings.Instance.timerOn;
+        timerTextShadow.enabled = Settings.Instance.timerOn;
+
         if (isRunning)
         {
             if (!SceneManager.GetActiveScene().isLoaded) // Check if a scene is loading
