@@ -12609,6 +12609,7 @@ GameObject:
   - component: {fileID: 1207133359}
   - component: {fileID: 1207133361}
   - component: {fileID: 1207133360}
+  - component: {fileID: 1207133362}
   m_Layer: 5
   m_Name: Music Mute OFF
   m_TagString: Untagged
@@ -12731,6 +12732,32 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1207133362}
+        m_TargetAssemblyTypeName: ToggleAudio, Assembly-CSharp
+        m_MethodName: ToggleMuteMusic
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &1207133362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207133358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d9cdcc96c0ac174b9d98a12023c1e73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioType: 1
+  onButton: 0
 --- !u!1 &1212425421
 GameObject:
   m_ObjectHideFlags: 0
@@ -13622,13 +13649,14 @@ GameObject:
   - component: {fileID: 1311027240}
   - component: {fileID: 1311027242}
   - component: {fileID: 1311027241}
+  - component: {fileID: 1311027243}
   m_Layer: 5
   m_Name: Music Mute ON
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1311027240
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13645,9 +13673,9 @@ RectTransform:
   - {fileID: 224244913}
   m_Father: {fileID: 2062880938}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 303, y: 7}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1311027241
@@ -13744,6 +13772,32 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1207133362}
+        m_TargetAssemblyTypeName: ToggleAudio, Assembly-CSharp
+        m_MethodName: ToggleMuteMusic
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1311027243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311027239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d9cdcc96c0ac174b9d98a12023c1e73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioType: 1
+  onButton: 1
 --- !u!1 &1316042414
 GameObject:
   m_ObjectHideFlags: 0
@@ -14808,13 +14862,14 @@ GameObject:
   - component: {fileID: 1437922502}
   - component: {fileID: 1437922501}
   - component: {fileID: 1437922500}
+  - component: {fileID: 1437922503}
   m_Layer: 5
   m_Name: SFX Mute ON (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1437922500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14909,6 +14964,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1437922503}
+        m_TargetAssemblyTypeName: ToggleAudio, Assembly-CSharp
+        m_MethodName: ToggleMuteSFX
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &1437922502
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14925,11 +14992,25 @@ RectTransform:
   - {fileID: 1042289352}
   m_Father: {fileID: 2062880938}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 303, y: -29.79}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1437922503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437922499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d9cdcc96c0ac174b9d98a12023c1e73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioType: 0
+  onButton: 1
 --- !u!1 &1447911420
 GameObject:
   m_ObjectHideFlags: 0
@@ -17964,6 +18045,7 @@ GameObject:
   - component: {fileID: 1773860024}
   - component: {fileID: 1773860026}
   - component: {fileID: 1773860025}
+  - component: {fileID: 1773860027}
   m_Layer: 5
   m_Name: SFX Mute OFF (1)
   m_TagString: Untagged
@@ -18086,6 +18168,32 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1437922503}
+        m_TargetAssemblyTypeName: ToggleAudio, Assembly-CSharp
+        m_MethodName: ToggleMuteSFX
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &1773860027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773860023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d9cdcc96c0ac174b9d98a12023c1e73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioType: 0
+  onButton: 0
 --- !u!1 &1785650583
 GameObject:
   m_ObjectHideFlags: 0
