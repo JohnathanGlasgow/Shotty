@@ -17,16 +17,14 @@ public class CameraFollow : MonoBehaviour
     public float smoothSpeed = 0.05f; //how fast the camera moves towards the target (1 is almost instant, 0 doesn't move at all)
     public Vector3 offset;
  
-    void FixedUpdate() 
+    void Update() 
     {
         if (target != null)
         {
             Vector3 desiredPosition = target.position + offset;
-            Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+            float smoothFactor = smoothSpeed * Time.deltaTime;
+            Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothFactor);
             transform.position = smoothedPosition;
-
-            // You can also use LookAt if you want the camera to always look at the target
-            // transform.LookAt(target);
         }
     }
 }

@@ -1,0 +1,149 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!243 &-8593604605561076775
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Music
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 726c38c56fc76fe4586699191b20d53b
+  m_Children: []
+  m_Volume: ff5d909e0b370ef4093971c32eec8072
+  m_Pitch: f470f45e784bf56499c030000ffb6883
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -6178128210701740930}
+  m_UserColorIndex: 1
+  m_Mute: 1
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &-6178128210701740930
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: bcfd0abb92eeb1447ad27211647df669
+  m_EffectName: Attenuation
+  m_MixLevel: 231806ba31a4bcf4583431a1562e7c19
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &-3530430436505104358
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 626547ed965fb384bb48076eab2dafd9
+  m_EffectName: Attenuation
+  m_MixLevel: a65b6e10f35023b488eecb0d4958974d
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!243 &-70536158119130477
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SFX
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 8d442f18f6c2bac4cabb738fb2808954
+  m_Children: []
+  m_Volume: 38429edc9b3762348840d838b3094fac
+  m_Pitch: 6aeee295f1a805f4baed81b44f512bb2
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -3530430436505104358}
+  m_UserColorIndex: 6
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!241 &24100000
+AudioMixerController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AudioMixer
+  m_OutputGroup: {fileID: 0}
+  m_MasterGroup: {fileID: 24300002}
+  m_Snapshots:
+  - {fileID: 24500006}
+  m_StartSnapshot: {fileID: 24500006}
+  m_SuspendThreshold: -80
+  m_EnableSuspend: 1
+  m_UpdateMode: 0
+  m_ExposedParameters:
+  - guid: ff5d909e0b370ef4093971c32eec8072
+    name: MusicVolume
+  - guid: 38429edc9b3762348840d838b3094fac
+    name: SFXVolume
+  m_AudioMixerGroupViews:
+  - guids:
+    - b51ffbb2e0de2ce41af889c834f7083f
+    - 726c38c56fc76fe4586699191b20d53b
+    - 8d442f18f6c2bac4cabb738fb2808954
+    name: View
+  m_CurrentViewIndex: 0
+  m_TargetSnapshot: {fileID: 24500006}
+--- !u!243 &24300002
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Master
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: b51ffbb2e0de2ce41af889c834f7083f
+  m_Children:
+  - {fileID: -70536158119130477}
+  - {fileID: -8593604605561076775}
+  m_Volume: 820ecaa587b2dad4e9ab211ba72936a2
+  m_Pitch: e7daeced807dba340bfeb3adc3297afd
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 24400004}
+  m_UserColorIndex: 3
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &24400004
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: aaf86e9e1109fbb4997e5cf51263fca4
+  m_EffectName: Attenuation
+  m_MixLevel: 41eadae9bd045a54d87aaf4f63498fab
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!245 &24500006
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Snapshot
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: ed47d93d4d38ea24ea5720832bf767de
+  m_FloatValues:
+    820ecaa587b2dad4e9ab211ba72936a2: -10.345213
+    b04fc959c07f58048ab4d18fd8e490b0: 22000
+    682a4b1aee959704f90173a8b7128e0a: 1
+    92d3e3ebea9d37740bfa8700cb53772d: 22000
+    38429edc9b3762348840d838b3094fac: 0
+    ff5d909e0b370ef4093971c32eec8072: 0.13552584
+    c86d92ce4a520a74d80cb3824ab280ec: 1
+  m_TransitionOverrides: {}

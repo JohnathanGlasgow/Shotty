@@ -9,6 +9,9 @@ TagManager:
   - Door
   - Key
   - Obstacle
+  - Music
+  - Audio
+  - Timer
   layers:
   - Default
   - TransparentFX

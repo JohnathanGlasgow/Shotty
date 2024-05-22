@@ -21,6 +21,8 @@ public abstract class Powerup : MonoBehaviour
     public float FadeSpeed = 0.01f; // the speed at which the powerup fades in
     public bool isAvailable = true; // whether the powerup is is available or not
 
+    public ParticleSystem breakParticles;
+
     protected float cooldown;   // the current cooldown of the powerup
     protected Coroutine fadeInCoroutine;
     protected bool allFadedIn = false;
@@ -83,6 +85,15 @@ public abstract class Powerup : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            if(breakParticles)
+            {
+                breakParticles.Play();
+            }else
+            {
+                Debug.LogWarning($"breakParticles is not assigned on GameObject {gameObject.name}!");
+            }
+            
+            
             StopFadeIn();
             powerUpEffect(other);
             Deactivate();
